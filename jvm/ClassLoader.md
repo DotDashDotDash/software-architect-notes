@@ -23,3 +23,9 @@
 * 命令行JVM启动时含有main()的主类
 * Class.forName()
 * ClassLoader.loadClass()动态加载，不会执行代码块
+
+## Classloader代码测试
+
+* [双亲委托模型PDM](../src/jvm/ParentDelegateModel.java)
+* [Class.forName()触发static块执行，JDBC如何破坏PDM注册Driver](../src/jvm/ParentDelegateModel.java)
+* [ClassLoader继承关系测试](../src/jvm/MyClassLoader.java)
