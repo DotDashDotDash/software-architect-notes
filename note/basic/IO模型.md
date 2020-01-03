@@ -2,27 +2,27 @@
 
 ## Blocking IO模型
 
-<div align=center><img src="../pics/blockio.webp"></div>
+<div align=center><img src="../../assets/blockio.webp"></div>
 
 ## Non-Blocking IO模型
 
-<div align=center><img src="../pics/nonblockio.webp"></div>
+<div align=center><img src="../../assets/nonblockio.webp"></div>
 
 ## IO复用
 
-<div align=center><img src="../pics/iomul.webp"></div>
+<div align=center><img src="../../assets/iomul.webp"></div>
 
 ## Signal Driven IO模型
 
-<div align=center><img src="../pics/signalio.webp"></div>
+<div align=center><img src="../../assets/signalio.webp"></div>
 
 ## Asynchronous IO模型
 
-<div align=center><img src="../pics/asyio.webp"></div>
+<div align=center><img src="../../assets/asyio.webp"></div>
 
 ## 五种I/O划分
 
-<div align=center><img src="../pics/sort.webp"></div>
+<div align=center><img src="../../assets/sort.webp"></div>
 
 ## 参考链接
 

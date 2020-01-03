@@ -2,7 +2,7 @@
 
 ## ClassLoader执行流程
 
-<div align=center><img src="../pics/classloader1.png"/></div>
+<div align=center><img src="../../assets/classloader1.png"/></div>
 
 * 加载: 通过一个类的全限定名来获取该类的二进制字节流，把二进制字节流代表的静态数据结构转化为运行时数据区的数据结构，将该二进制字节流转化为Class类
 * 验证: 验证.class文件是否对虚拟机有危害，主要进行下面的验证
@@ -16,7 +16,7 @@
 
 ## ClassLoader种类
 
-<div align=center><img src="../pics/classloader2.png"></div>
+<div align=center><img src="../../assets/classloader2.png"></div>
 
 ## 类加载的三种方式
 
@@ -26,6 +26,6 @@
 
 ## Classloader代码测试
 
-* [双亲委托模型PDM](../src/jvm/ParentDelegateModel.java)
-* [Class.forName()触发static块执行，JDBC如何破坏PDM注册Driver](../src/jvm/ParentDelegateModel.java)
-* [ClassLoader继承关系测试](../src/jvm/MyClassLoader.java)
+* [双亲委托模型PDM](../../src/jvm/ParentDelegateModel.java)
+* [Class.forName()触发static块执行，JDBC如何破坏PDM注册Driver](../../src/jvm/ParentDelegateModel.java)
+* [ClassLoader继承关系测试](../../src/jvm/MyClassLoader.java)
