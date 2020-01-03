@@ -1,5 +1,7 @@
 package jvm;
 
+import java.lang.ref.PhantomReference;
+import java.lang.ref.ReferenceQueue;
 import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -9,6 +11,7 @@ public class JavaFourReferences {
 
     /**
      * Java default declaration is strong reference
+     *
      */
     public static void strongReference() {
         //define a strong reference
@@ -45,7 +48,10 @@ public class JavaFourReferences {
         }
     }
 
-    private static void weakReference() {
+    /**
+     * weak reference, once gc works, weak reference will be collected
+     */
+    public static void weakReference() {
         for (int i = 0; i < 10; i++) {
             byte[] buff = new byte[1024 * 1024];
             WeakReference<byte[]> sr = new WeakReference<>(buff);
@@ -58,7 +64,25 @@ public class JavaFourReferences {
         }
     }
 
+    private static List<PhantomReference<byte[]>> plist = new ArrayList<>();
+
+    /**
+     * with ReferenceQueue, phantom reference cannot be collected by GC
+     * when memory lacks
+     */
+    public static void phantomReference() {
+        ReferenceQueue<byte[]> ref = new ReferenceQueue<>();
+        for (int i = 0; i < 10; i++) {
+            byte[] bytes = new byte[1024 * 1024];
+            PhantomReference<byte[]> p = new PhantomReference(bytes, ref);
+            plist.add(p);
+        }
+
+        System.gc();    //gc
+    }
+
     public static void main(String[] args) {
-        JavaFourReferences.softReference();
+        //JavaFourReferences.softReference();
+        JavaFourReferences.phantomReference();
     }
 }
