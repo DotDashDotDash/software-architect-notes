@@ -12,7 +12,7 @@
 
 <div align=center><img src="../pics/iomul.webp"></div>
 
-## Siganl Driven IO模型
+## Signal Driven IO模型
 
 <div align=center><img src="../pics/signalio.webp"></div>
 
