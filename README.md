@@ -13,6 +13,9 @@
 
 * [I/O模型](./note/basic/IO模型.md)
 * [NIO模型](./note/basic/NIO模型.md)
+* [内部类](./note/basic/内部类.md)
+* [Java反射机制](./note/basic/Java反射.md)
+* [Java泛型](./note/basic/Java泛型.md)
 
 ### :rocket: Java虚拟机
 
