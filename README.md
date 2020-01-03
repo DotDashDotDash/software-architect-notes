@@ -12,12 +12,12 @@
 ### :coffee: Java核心
 
 * [I/O模型](./note/basic/IO模型.md)
-* [NIO模型](./note/basic/NIO模型/md)
+* [NIO模型](./note/basic/NIO模型.md)
 
 ### :rocket: Java虚拟机
 
 * [ClassLoader](./note/jvm/Java类加载器.md)
-* [JVM架构](./note/jvm/JVM架构.md)
+* [JVM架构](./note/jvm/JVM结构.md)
 
 ### :cloud: Web
 
@@ -27,31 +27,31 @@
 
 ### :book:源码阅读
 
-* [base-framework](./base-framework)
-  * [Transient](./base-framework/transient.md)
-* [collection-framework](./collection-framework)
-  * [HashMap](./collection-framework/HashMap.md)
-  * [HashTable](./collection-framework/HashTable.md)
-  * [HashSet](./collection-framework/HashSet.md)
-  * [Collection](./collection-framework/Collection.md)
-  * [AbstractCollection](./collection-framework/AbstractCollection.md)
-  * [ArrayList](./collection-framework/ArrayList.md)
-  * [LinkedList](./collection-framework/LinkedList.md)
-  * [PriorityQueue](./collection-framework/PriorityQueue.md)
-  * [Vector](./collection-framework/Vector.md)
-  * [Stack](./collection-framework/Stack.md)
-* [concurrent-framework](./concurrent-framework)
-  * [atomic](./concurrent-framework/atomic)
-    * [Violatile](./concurrent-framework/atomic/voliatle.md)
-    * [AtomicStampedReference](./concurrent-framework/atomic/AtomicStampedReference.md)
-    * [AtomicMarkableReference](./concurrent-framework/atomic/AtomicMarkableReference.md)
-  * [locks](./concurrent-framework/locks)
-    * [Condition](./concurrent-framework/locks/Condition.md)
-    * [AbstractQueuedSynchronizer--I](./concurrent-framework/locks/AbstractQueuedSynchronizer(I).md)
-    * [AbstractQueuedSynchronizer--II](./concurrent-framework/locks/AbstractQueuedSynchronizer(II).md)
-    * [ReentrantLock(unfair)](./concurrent-framework/locks/ReentrantLock(unfair).md)
-    * [ReentrantLock(fair)](./concurrent-framework/locks/ReentrantLock(fair).md)
-  * [collections](./concurrent-framework/collections)
-    * [ConcurrentHashMap](./concurrent-framework/collections/ConcurrentHashMap.md)
+* [base-framework](./doc/base-framework)
+  * [Transient](./doc/base-framework/transient.md)
+* [collection-framework](./doc/collection-framework)
+  * [HashMap](./doc/collection-framework/HashMap.md)
+  * [HashTable](./doc/collection-framework/HashTable.md)
+  * [HashSet](./doc/collection-framework/HashSet.md)
+  * [Collection](./doc/collection-framework/Collection.md)
+  * [AbstractCollection](./doc/collection-framework/AbstractCollection.md)
+  * [ArrayList](./doc/collection-framework/ArrayList.md)
+  * [LinkedList](./doc/collection-framework/LinkedList.md)
+  * [PriorityQueue](./doc/collection-framework/PriorityQueue.md)
+  * [Vector](./doc/collection-framework/Vector.md)
+  * [Stack](./doc/collection-framework/Stack.md)
+* [concurrent-framework](./doc/concurrent-framework)
+  * [atomic](./doc/concurrent-framework/atomic)
+    * [Violatile](./doc/concurrent-framework/atomic/voliatle.md)
+    * [AtomicStampedReference](./doc/concurrent-framework/atomic/AtomicStampedReference.md)
+    * [AtomicMarkableReference](./doc/concurrent-framework/atomic/AtomicMarkableReference.md)
+  * [locks](./doc/concurrent-framework/locks)
+    * [Condition](./doc/concurrent-framework/locks/Condition.md)
+    * [AbstractQueuedSynchronizer--I](./doc/concurrent-framework/locks/AbstractQueuedSynchronizer(I).md)
+    * [AbstractQueuedSynchronizer--II](./doc/concurrent-framework/locks/AbstractQueuedSynchronizer(II).md)
+    * [ReentrantLock(unfair)](./doc/concurrent-framework/locks/ReentrantLock(unfair).md)
+    * [ReentrantLock(fair)](./doc/concurrent-framework/locks/ReentrantLock(fair).md)
+  * [collections](./doc/concurrent-framework/collections)
+    * [ConcurrentHashMap](./doc/concurrent-framework/collections/ConcurrentHashMap.md)
 
 ### :rotating_light: FAQ
