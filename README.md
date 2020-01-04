@@ -9,6 +9,10 @@
     <img src="./assets/profile.jfif" width="200px">
 </div>
 
+```markdown
+我不会重新写别人已经写过很多次的东西或者笔记，我只是根据我认为比较重要的把他们记录下来，同时也会给上更为详细的文档的参考链接
+```
+
 ### :coffee: Java核心
 
 * [I/O模型](./note/basic/IO模型.md)
@@ -16,6 +20,7 @@
 * [内部类](./note/basic/内部类.md)
 * [Java反射机制](./note/basic/Java反射.md)
 * [Java泛型](./note/basic/Java泛型.md)
+* [Java序列化](./note/basic/序列化.md)
 
 ### :rocket: Java虚拟机
 
