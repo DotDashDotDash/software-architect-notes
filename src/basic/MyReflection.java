@@ -2,12 +2,13 @@ package basic;
 
 import jvm.MyOOM;
 
+import java.io.Serializable;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-public class MyReflection {
+public class MyReflection implements Serializable {
 
     public static void main(String[] args) {
         MyReflection myReflection = new MyReflection();

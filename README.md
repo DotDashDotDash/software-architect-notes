@@ -21,6 +21,7 @@
 * [Java反射机制](./note/basic/Java反射.md)
 * [Java泛型](./note/basic/Java泛型.md)
 * [Java序列化](./note/basic/序列化.md)
+* [Java深/浅拷贝](./note/basic/Java拷贝.md)
 
 ### :rocket: Java虚拟机
 
