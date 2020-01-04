@@ -1,6 +1,6 @@
 <br>
 
-|&nbsp;&nbsp;[:coffee:](./note/basic)Java核心&nbsp;&nbsp;| &nbsp;&nbsp;[:rocket:](./note/jvm)Java虚拟机&nbsp;&nbsp;|&nbsp;&nbsp;[:pencil2:](./note/algorithm)算法&nbsp;&nbsp;|&nbsp;&nbsp;[:cloud:](./note/web)Web&nbsp;&nbsp;|&nbsp;&nbsp;[:wrench:](../note/database)数据库&nbsp;&nbsp;|&nbsp;&nbsp;[:rotating_light:](./FAQ)Bug记录&nbsp;&nbsp;|&nbsp;&nbsp;[:book:](./doc)源码阅读&nbsp;&nbsp;|
+|&nbsp;&nbsp;[:coffee:](./note/basic)Java核心&nbsp;&nbsp;| &nbsp;&nbsp;[:computer:](./note/jvm)Java虚拟机&nbsp;&nbsp;|&nbsp;&nbsp;[:pencil:](./note/concurrent)Java并发&nbsp;&nbsp;|&nbsp;&nbsp;[:cloud:](./note/web)Web&nbsp;&nbsp;|&nbsp;&nbsp;[:wrench:](../note/database)数据库&nbsp;&nbsp;|&nbsp;&nbsp;[:rotating_light:](./FAQ)Bug记录&nbsp;&nbsp;|&nbsp;&nbsp;[:book:](./doc)源码阅读&nbsp;&nbsp;|
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 
 <br>
@@ -23,7 +23,7 @@
 * [Java序列化](./note/basic/序列化.md)
 * [Java深/浅拷贝](./note/basic/Java拷贝.md)
 
-### :rocket: Java虚拟机
+### :computer: Java虚拟机
 
 * [ClassLoader](./note/jvm/Java类加载器.md)
 * [JVM架构](./note/jvm/JVM结构.md)
