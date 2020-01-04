@@ -4,13 +4,17 @@
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 
 <br>
-
-<img src="./assets/tomcat.jpg" width="80px" height="60px">
-<img src="./assets/mybatis.png" width="60px" height="65px">
-<img src="./assets/spring.png" width="60px" height="60px">
-<img src="./assets/java.png" width="60px">
-<img src="./assets/maven.png" width="60px">
-
+<table>
+  <tr>
+    <td>
+      <img src="./assets/tomcat.jpg" width="80px" height="60px">
+      <img src="./assets/mybatis.png" width="60px" height="65px">
+      <img src="./assets/spring.png" width="60px" height="60px">
+      <img src="./assets/java.png" width="60px">
+      <img src="./assets/maven.png" width="60px">
+  </td>
+  </tr>
+</table>
 
 ### :coffee: Java核心
 
