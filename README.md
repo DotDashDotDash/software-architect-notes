@@ -39,6 +39,7 @@
 
 ### :penguin:Java并发
 
+* [多线程基础](/note/concurrent/线程.md)
 * [ExecutorService线程池](/note/concurrent/ExecutorService.md)
 
 ### :book:源码阅读
