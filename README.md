@@ -1,17 +1,16 @@
 <br>
 
-|&nbsp;&nbsp;[:coffee:](./note/basic)Java核心&nbsp;&nbsp;| &nbsp;&nbsp;[:computer:](./note/jvm)Java虚拟机&nbsp;&nbsp;|&nbsp;&nbsp;[:pencil:](./note/concurrent)Java并发&nbsp;&nbsp;|&nbsp;&nbsp;[:cloud:](./note/web)Web&nbsp;&nbsp;|&nbsp;&nbsp;[:wrench:](../note/database)数据库&nbsp;&nbsp;|&nbsp;&nbsp;[:rotating_light:](./FAQ)Bug记录&nbsp;&nbsp;|&nbsp;&nbsp;[:book:](./doc)源码阅读&nbsp;&nbsp;|
+|[:coffee:](./note/basic)<br>&nbsp;Java核心&nbsp;| [:computer:](./note/jvm)<br>&nbsp;Java虚拟机&nbsp;|[:pencil:](./note/concurrent)<br>&nbsp;Java并发&nbsp;|[:cloud:](./note/web)<br>&nbsp;Web&nbsp;|[:wrench:](../note/database)<br>&nbsp;数据库&nbsp;|[:rotating_light:](./FAQ)<br>&nbsp;Bug记录&nbsp;|[:book:](./doc)<br>&nbsp;源码阅读&nbsp;|
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 
 <br>
 
-<div align="center">
-    <img src="./assets/profile.jfif" width="200px">
-</div>
+<img src="./assets/tomcat.jpg" width="80px" height="60px">
+<img src="./assets/mybatis.png" width="60px" height="65px">
+<img src="./assets/spring.png" width="60px" height="60px">
+<img src="./assets/java.png" width="60px">
+<img src="./assets/maven.png" width="60px">
 
-```markdown
-我不会重新写别人已经写过很多次的东西或者笔记，我只是根据我认为比较重要的把他们记录下来，同时也会给上更为详细的文档的参考链接
-```
 
 ### :coffee: Java核心
 
