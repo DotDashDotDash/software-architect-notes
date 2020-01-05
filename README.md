@@ -41,6 +41,8 @@
 
 * [多线程基础](/note/concurrent/线程.md)
 * [ExecutorService线程池](/note/concurrent/ExecutorService.md)
+* [乐观/悲观/自旋锁](/note/concurrent/乐观悲观自旋锁.md)
+* [synchronized锁(重要)](/note/concurrent/synchronized.md)
 
 ### :book:源码阅读
 
