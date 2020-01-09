@@ -39,8 +39,9 @@
 
 ### :penguin:Java并发
 
-* [多线程基础](/note/concurrent/线程.md)
+* [Java多线程基础](/note/concurrent/线程.md)
 * [Java锁](/note/concurrent/Java锁.md)
+* [Java阻塞队列](/note/concurrent/阻塞队列.md)
 * [ExecutorService线程池](/note/concurrent/ExecutorService.md)
 * [synchronized锁(重要)](/note/concurrent/synchronized.md)
 * [Semaphore信号量](/note/concurrent/Semaphore的强大之处.md)
