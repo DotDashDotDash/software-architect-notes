@@ -47,6 +47,7 @@
 * [Semaphore信号量](/note/concurrent/Semaphore的强大之处.md)
 * [ReadWriteLock读写锁](/note/concurrent/ReadWriteLock.md)
 * [CountDownLatch与join()](/note/concurrent/CountDownLatch与join().md)
+* [CyclicBarrier循环栅栏](/note/concurrent/CyclicBarrier)
 
 ### :book:源码阅读
 
