@@ -48,6 +48,7 @@
 * [ReadWriteLock读写锁](/note/concurrent/ReadWriteLock.md)
 * [CountDownLatch与join()](/note/concurrent/CountDownLatch与join().md)
 * [CyclicBarrier循环栅栏](/note/concurrent/CyclicBarrier)
+* [多线程数据共享](/note/concurrent/线程之间共享数据.md)
 
 ### :book:源码阅读
 
