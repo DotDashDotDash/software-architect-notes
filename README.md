@@ -49,6 +49,8 @@
 * [CountDownLatch与join()](/note/concurrent/CountDownLatch与join().md)
 * [CyclicBarrier循环栅栏](/note/concurrent/CyclicBarrier)
 * [多线程数据共享](/note/concurrent/线程之间共享数据.md)
+* [CAS](/note/concurrent/CAS.md)
+* [AQS](/note/concurrent/AQS.md)
 
 ### :book:源码阅读
 
