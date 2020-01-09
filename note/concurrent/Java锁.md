@@ -16,3 +16,13 @@
 * jdk1.6之前: 时间固定
 * jdk1.6之后: 自适应自旋锁，根据上次自旋时间适应，还根据CPU线程数，<=CPUs/2自旋，>=CPUs/2阻塞
 * 自旋锁的最坏情况是CPU A到CPU B的存储时间
+
+## synchronized锁
+
+参考[synchronized锁](/note/concurrent/synchronized.md)
+
+## Semaphore信号量
+
+类似ReentrantLock，几乎ReentrantLock的所有功能它都能实现
+
+Semaphore设置的为可响应锁，也就是说，Semaphore.acquire()之后可以被Thread.interrupt()中断，类似ReentrantLock.lockInterruptibly()
