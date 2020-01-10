@@ -26,6 +26,7 @@
 * [Java序列化](./note/basic/序列化.md)
 * [Java深/浅拷贝](./note/basic/Java拷贝.md)
 * [Java注解(重点继承性)](/note/basic/注解.md)
+* [设计模式](/note/basic/设计模式.md)
 
 ### :computer: Java虚拟机
 
