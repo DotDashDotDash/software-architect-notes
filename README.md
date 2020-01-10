@@ -19,12 +19,13 @@
 ### :coffee: Java核心
 
 * [I/O模型](./note/basic/IO模型.md)
-* [NIO模型](./note/basic/NIO模型.md)
-* [内部类](./note/basic/内部类.md)
+* [JavaNIO模型](./note/basic/NIO模型.md)
+* [Java内部类](./note/basic/内部类.md)
 * [Java反射机制](./note/basic/Java反射.md)
 * [Java泛型](./note/basic/Java泛型.md)
 * [Java序列化](./note/basic/序列化.md)
 * [Java深/浅拷贝](./note/basic/Java拷贝.md)
+* [Java注解(重点继承性)](/note/basic/注解.md)
 
 ### :computer: Java虚拟机
 
