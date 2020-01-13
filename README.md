@@ -1,20 +1,9 @@
 <br>
 
-|[:coffee:](./note/basic)<br>&nbsp;Java核心&nbsp;| [:computer:](./note/jvm)<br>&nbsp;Java虚拟机&nbsp;|[:penguin:](./note/concurrent)<br>&nbsp;Java并发&nbsp;|[:cloud:](./note/web)<br>&nbsp;Web&nbsp;|[:wrench:](../note/database)<br>&nbsp;数据库&nbsp;|[:rotating_light:](./FAQ)<br>&nbsp;Bug记录&nbsp;|[:book:](./doc)<br>&nbsp;源码阅读&nbsp;|
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|[:coffee:](./note/basic)<br>&nbsp;Java核心&nbsp;| [:computer:](./note/jvm)<br>&nbsp;Java虚拟机&nbsp;|[:penguin:](./note/concurrent)<br>&nbsp;Java并发&nbsp;|[:cloud:](./note/web)<br>&nbsp;Web&nbsp;|[:wrench:](../note/database)<br>&nbsp;数据库&nbsp;|[:rotating_light:](./FAQ)<br>&nbsp;Bug记录&nbsp;|[:book:](./doc)<br>&nbsp;源码阅读&nbsp;|[:triangular_flag_on_post:](./note/distribution)<br>&nbsp;分布式&nbsp;|
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 
-<br>
-<table>
-  <tr>
-    <td>
-      <img src="./assets/tomcat.jpg" width="80px" height="60px">
-      <img src="./assets/mybatis.png" width="60px" height="65px">
-      <img src="./assets/spring.png" width="60px" height="60px">
-      <img src="./assets/java.png" width="60px">
-      <img src="./assets/maven.png" width="60px">
-  </td>
-  </tr>
-</table>
+<div align=center><img src="/assets/a.png" width=300px></div>
 
 ### :coffee: Java核心
 
@@ -53,6 +42,10 @@
 * [多线程数据共享](/note/concurrent/线程之间共享数据.md)
 * [CAS](/note/concurrent/CAS.md)
 * [AQS](/note/concurrent/AQS.md)
+
+### :triangular_flag_on_post:分布式
+
+* [ZooKeeper分布式集群](/note/distribution/ZooKeeper.md)
 
 ### :book:源码阅读
 
