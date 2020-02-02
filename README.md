@@ -56,6 +56,10 @@
 * [ZooKeeper分布式集群](/note/distribution/ZooKeeper.md)
 * [RMI+ZooKeeper实现分布式框架](/note/distribution/RMI+ZooKeeper分布式框架.md)
 
+### :wrench:数据库
+
+* [LeetCode数据库刷题-1](/note/database/LeetCode刷题.md)
+
 ### :book:源码阅读
 
 * [base-framework](./doc/base-framework)
