@@ -5,7 +5,7 @@
 |[:coffee:](./note/basic)<br>&nbsp;Java核心&nbsp;| [:computer:](./note/jvm)<br>&nbsp;Java虚拟机&nbsp;|[:penguin:](./note/concurrent)<br>&nbsp;Java并发&nbsp;|[:cloud:](./note/web)<br>&nbsp;Web&nbsp;|[:lock:](../note/database)<br>&nbsp;数据库&nbsp;|[:rotating_light:](./FAQ)<br>&nbsp;Bug记录&nbsp;|[:book:](./doc)<br>&nbsp;源码阅读&nbsp;|[:triangular_flag_on_post:](./note/distribution)<br>&nbsp;分布式&nbsp;|
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 
-</div><br><br>
+</div><br><br >
 
 <div align=center><img src="/assets/profile.jfif" width="200px"></div>
 
@@ -32,9 +32,11 @@
 * [JavaWeb三大组件之Filter](/note/web/spring/JavaWeb三大组件之Filter.md)
 * [JavaWeb三大组件之Lisntener](/note/web/spring/JavaWeb三大组件之Listener.md)
 * [Cookie与Session](/note/web/spring/Cookie与Session.md)
-* [DAO层持久化--MyBatis框架](./note/web/spring/MyBatis.md)
 * [SpringMVC](./note/web/spring/SpringMVC.md)
 * [Spring拦截器](./note/web/spring/Spring拦截器.md)
+* **持久化技术**
+  * [Hibernate知识点梳理](/note/hibernate/Hibernate知识点梳理.md)
+  * [Hibernate应用实践](/note/hibernate/Hibernate应用实践)
 
 ### :penguin:Java并发
 
