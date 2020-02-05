@@ -2,12 +2,12 @@
 
 <div align=center>
 
-|[:coffee:](./note/basic)<br>&nbsp;Java核心&nbsp;| [:computer:](./note/jvm)<br>&nbsp;Java虚拟机&nbsp;|[:penguin:](./note/concurrent)<br>&nbsp;Java并发&nbsp;|[:cloud:](./note/web)<br>&nbsp;Web&nbsp;|[:wrench:](../note/database)<br>&nbsp;数据库&nbsp;|[:rotating_light:](./FAQ)<br>&nbsp;Bug记录&nbsp;|[:book:](./doc)<br>&nbsp;源码阅读&nbsp;|[:triangular_flag_on_post:](./note/distribution)<br>&nbsp;分布式&nbsp;|
+|[:coffee:](./note/basic)<br>&nbsp;Java核心&nbsp;| [:computer:](./note/jvm)<br>&nbsp;Java虚拟机&nbsp;|[:penguin:](./note/concurrent)<br>&nbsp;Java并发&nbsp;|[:cloud:](./note/web)<br>&nbsp;Web&nbsp;|[:lock:](../note/database)<br>&nbsp;数据库&nbsp;|[:rotating_light:](./FAQ)<br>&nbsp;Bug记录&nbsp;|[:book:](./doc)<br>&nbsp;源码阅读&nbsp;|[:triangular_flag_on_post:](./note/distribution)<br>&nbsp;分布式&nbsp;|
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 
-</div>
+</div><br><br>
 
-<div align=center><img src="/assets/a.png" width=300px></div>
+<div align=center><img src="/assets/profile.jfif" width="200px"></div>
 
 ### :coffee: Java核心
 
@@ -56,10 +56,18 @@
 * [ZooKeeper分布式集群](/note/distribution/ZooKeeper.md)
 * [RMI+ZooKeeper实现分布式框架](/note/distribution/RMI+ZooKeeper分布式框架.md)
 
-### :wrench:数据库
+### :lock:数据库
 
-* [LeetCode数据库刷题-1](/note/database/LeetCode刷题.md)
-* [LeetCode数据库付费题目](/note/database/LeetCode付费题目.md)
+* **NoSQL**
+  * [Redis持久化](/note/database/redis/redis持久化.md)
+  * [Redis事务](/note/database/redis/redis事务.md)
+* **MySQL**
+  * [MySQL事务隔离级别](/note/database/mysql/MySQL事务隔离级别.md)
+  * [MySQL存储与索引](/note/database/mysql/MySQL存储与索引.md)
+  * [MySQL优化(转载)](https://mp.weixin.qq.com/s?__biz=Mzg2OTA0Njk0OA==&mid=2247485117&idx=1&sn=92361755b7c3de488b415ec4c5f46d73&chksm=cea24976f9d5c060babe50c3747616cce63df5d50947903a262704988143c2eeb4069ae45420&token=79317275&lang=zh_CN#rd)
+* **LeetCode刷题(MySQL)**
+  * [LeetCode数据库刷题-1](/note/database/LeetCode刷题.md)
+  * [LeetCode数据库付费题目](/note/database/LeetCode付费题目.md)
 
 ### :book:源码阅读
 
