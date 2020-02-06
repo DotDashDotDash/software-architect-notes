@@ -35,8 +35,9 @@
 * [SpringMVC](./note/web/spring/SpringMVC.md)
 * [Spring拦截器](./note/web/spring/Spring拦截器.md)
 * **持久化技术**
-  * [Hibernate知识点梳理](/note/hibernate/Hibernate知识点梳理.md)
-  * [Hibernate应用实践](/note/hibernate/Hibernate应用实践)
+  * [Hibernate知识点梳理](/note/web/orm/hibernate/Hibernate知识点梳理.md)
+  * [Hibernate应用实践](/note/web/orm/hibernate/Hibernate应用实践)
+  * [MyBatis面试集锦](/note/web/orm/mybatis/MyBatis面试题总结.md)
 
 ### :penguin:Java并发
 
