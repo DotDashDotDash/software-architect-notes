@@ -32,8 +32,10 @@
 * [JavaWeb三大组件之Filter](/note/web/spring/JavaWeb三大组件之Filter.md)
 * [JavaWeb三大组件之Lisntener](/note/web/spring/JavaWeb三大组件之Listener.md)
 * [Cookie与Session](/note/web/spring/Cookie与Session.md)
-* [SpringMVC](./note/web/spring/SpringMVC.md)
-* [Spring拦截器](./note/web/spring/Spring拦截器.md)
+* **Spring**
+  * [SpringMVC](./note/web/spring/SpringMVC.md)
+  * [Spring拦截器](./note/web/spring/Spring拦截器.md)
+  * [Spring Bean解析和注册过程](/note/web/spring/Spring-Bean解析注册.md)
 * **持久化技术**
   * [Hibernate知识点梳理](/note/web/orm/hibernate/Hibernate知识点梳理.md)
   * [Hibernate应用实践](/note/web/orm/hibernate/Hibernate应用实践)
@@ -74,31 +76,7 @@
 
 ### :book:源码阅读
 
-* [base-framework](./doc/base-framework)
-  * [Transient](./doc/base-framework/transient.md)
-* [collection-framework](./doc/collection-framework)
-  * [HashMap](./doc/collection-framework/HashMap.md)
-  * [HashTable](./doc/collection-framework/HashTable.md)
-  * [HashSet](./doc/collection-framework/HashSet.md)
-  * [Collection](./doc/collection-framework/Collection.md)
-  * [AbstractCollection](./doc/collection-framework/AbstractCollection.md)
-  * [ArrayList](./doc/collection-framework/ArrayList.md)
-  * [LinkedList](./doc/collection-framework/LinkedList.md)
-  * [PriorityQueue](./doc/collection-framework/PriorityQueue.md)
-  * [Vector](./doc/collection-framework/Vector.md)
-  * [Stack](./doc/collection-framework/Stack.md)
-* [concurrent-framework](./doc/concurrent-framework)
-  * [atomic](./doc/concurrent-framework/atomic)
-    * [Violatile](./doc/concurrent-framework/atomic/voliatle.md)
-    * [AtomicStampedReference](./doc/concurrent-framework/atomic/AtomicStampedReference.md)
-    * [AtomicMarkableReference](./doc/concurrent-framework/atomic/AtomicMarkableReference.md)
-  * [locks](./doc/concurrent-framework/locks)
-    * [Condition](./doc/concurrent-framework/locks/Condition.md)
-    * [AbstractQueuedSynchronizer--I](./doc/concurrent-framework/locks/AbstractQueuedSynchronizer(I).md)
-    * [AbstractQueuedSynchronizer--II](./doc/concurrent-framework/locks/AbstractQueuedSynchronizer(II).md)
-    * [ReentrantLock(unfair)](./doc/concurrent-framework/locks/ReentrantLock(unfair).md)
-    * [ReentrantLock(fair)](./doc/concurrent-framework/locks/ReentrantLock(fair).md)
-  * [collections](./doc/concurrent-framework/collections)
-    * [ConcurrentHashMap](./doc/concurrent-framework/collections/ConcurrentHashMap.md)
+* [Jdk源码笔记](/doc/jdk)
+* [Spring源码笔记](doc/spring)
 
 ### :rotating_light: FAQ
