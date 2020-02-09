@@ -58,8 +58,9 @@
 
 ### :triangular_flag_on_post:分布式
 
-* [ZooKeeper分布式集群](/note/distribution/ZooKeeper.md)
-* [RMI+ZooKeeper实现分布式框架](/note/distribution/RMI+ZooKeeper分布式框架.md)
+* [分布式一致性](/note/distribution/分布式一致性.md)
+* [ZooKeeper入门](/note/distribution/ZooKeeper入门.md)
+* [ZooKeeper&Paxos进阶(转载)](https://github.com/Snailclimb/JavaGuide/blob/master/docs/system-design/framework/ZooKeeper-plus.md)
 
 ### :lock:数据库
 
