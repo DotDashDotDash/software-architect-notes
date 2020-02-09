@@ -80,4 +80,6 @@
 * [Jdk源码笔记](/doc/jdk)
 * [Spring源码笔记](doc/spring)
 
-### :rotating_light: FAQ
+### :rotating_light: 高强度集训
+
+* [Java高强度集训Day1](note/Q&A/Java高强度训练Day1.md)
