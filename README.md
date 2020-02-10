@@ -83,4 +83,5 @@
 
 ### :rotating_light: 高强度集训
 
-* [Java高强度集训Day1](note/Q&A/Java高强度训练Day1.md)
+* [Java高强度训练Day1](note/Q&A/Java高强度训练Day1.md)
+* [Java高强度训练Day2](note/Q&A/Java高强度训练Day2.md)
