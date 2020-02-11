@@ -1,19 +1,14 @@
-<br>
-
 <div align=center>
 
 |[:coffee:](./note/basic)<br>&nbsp;Java核心&nbsp;| [:computer:](./note/jvm)<br>&nbsp;Java虚拟机&nbsp;|[:penguin:](./note/concurrent)<br>&nbsp;Java并发&nbsp;|[:cloud:](./note/web)<br>&nbsp;Web&nbsp;|[:lock:](../note/database)<br>&nbsp;数据库&nbsp;|[:rotating_light:](./FAQ)<br>&nbsp;高强度训练&nbsp;|[:book:](./doc)<br>&nbsp;面经&nbsp;|[:triangular_flag_on_post:](./note/distribution)<br>&nbsp;分布式&nbsp;|
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 
-</div><br><br >
+</div><br>
 
 <div align=center><img src="/assets/profile.jfif" width="200px"></div>
 
 ### :coffee: Java核心
 
-* [I/O模型](./note/basic/IO模型.md)
-* [JavaNIO模型](./note/basic/NIO模型.md)
-* [Java内部类](./note/basic/内部类.md)
 * [Java反射机制](./note/basic/Java反射.md)
 * [Java泛型](./note/basic/Java泛型.md)
 * [Java序列化](./note/basic/序列化.md)
@@ -31,10 +26,8 @@
 * [JavaWeb三大组件之Servlet](/note/web/spring/JavaWeb三大组件之Servlet.md)
 * [JavaWeb三大组件之Filter](/note/web/spring/JavaWeb三大组件之Filter.md)
 * [JavaWeb三大组件之Lisntener](/note/web/spring/JavaWeb三大组件之Listener.md)
-* [Cookie与Session](/note/web/spring/Cookie与Session.md)
 * **Spring**
   * [SpringMVC](./note/web/spring/SpringMVC.md)
-  * [Spring拦截器](./note/web/spring/Spring拦截器.md)
   * [Spring Bean解析和注册过程](/note/web/spring/Spring-Bean解析注册.md)
 * **持久化技术**
   * [Hibernate应用实践](/note/web/orm/hibernate/Hibernate应用实践)
