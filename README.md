@@ -2,7 +2,7 @@
 
 <div align=center>
 
-|[:coffee:](./note/basic)<br>&nbsp;Java核心&nbsp;| [:computer:](./note/jvm)<br>&nbsp;Java虚拟机&nbsp;|[:penguin:](./note/concurrent)<br>&nbsp;Java并发&nbsp;|[:cloud:](./note/web)<br>&nbsp;Web&nbsp;|[:lock:](../note/database)<br>&nbsp;数据库&nbsp;|[:rotating_light:](./FAQ)<br>&nbsp;Bug记录&nbsp;|[:book:](./doc)<br>&nbsp;源码阅读&nbsp;|[:triangular_flag_on_post:](./note/distribution)<br>&nbsp;分布式&nbsp;|
+|[:coffee:](./note/basic)<br>&nbsp;Java核心&nbsp;| [:computer:](./note/jvm)<br>&nbsp;Java虚拟机&nbsp;|[:penguin:](./note/concurrent)<br>&nbsp;Java并发&nbsp;|[:cloud:](./note/web)<br>&nbsp;Web&nbsp;|[:lock:](../note/database)<br>&nbsp;数据库&nbsp;|[:rotating_light:](./FAQ)<br>&nbsp;高强度训练&nbsp;|[:book:](./doc)<br>&nbsp;面经&nbsp;|[:triangular_flag_on_post:](./note/distribution)<br>&nbsp;分布式&nbsp;|
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 
 </div><br><br >
@@ -37,9 +37,7 @@
   * [Spring拦截器](./note/web/spring/Spring拦截器.md)
   * [Spring Bean解析和注册过程](/note/web/spring/Spring-Bean解析注册.md)
 * **持久化技术**
-  * [Hibernate知识点梳理](/note/web/orm/hibernate/Hibernate知识点梳理.md)
   * [Hibernate应用实践](/note/web/orm/hibernate/Hibernate应用实践)
-  * [MyBatis面试集锦](/note/web/orm/mybatis/MyBatis面试题总结.md)
 
 ### :penguin:Java并发
 
@@ -76,10 +74,13 @@
   * [LeetCode数据库刷题-1](/note/database/LeetCode刷题.md)
   * [LeetCode数据库付费题目](/note/database/LeetCode付费题目.md)
 
-### :book:源码阅读
+### :book:面经
 
-* [Jdk源码笔记](/doc/jdk)
-* [Spring源码笔记](doc/spring)
+* [JavaSE 面经](note/Q&A/JavaSE-集合面经.md)
+* [JavaWeb 面经](note/Q&A/JavaWeb面经.md)
+* [Spring 面经](note/Q&A/Spring面经.md)
+* [MyBatis 面经](/note/web/orm/mybatis/MyBatis面试题总结.md)
+* [Hibernate 面经](/note/web/orm/hibernate/Hibernate知识点梳理.md)
 
 ### :rotating_light: 高强度集训
 
