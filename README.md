@@ -76,6 +76,7 @@
 * [Spring 面经](note/Q&A/Spring面经.md)
 * [MyBatis 面经](/note/web/orm/mybatis/MyBatis面试题总结.md)
 * [Hibernate 面经](/note/web/orm/hibernate/Hibernate知识点梳理.md)
+* [数据库面经](note/database/mysql/数据库面经.md)
 
 ### :rotating_light: 高强度集训
 
