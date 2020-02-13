@@ -60,8 +60,10 @@
   * [Redis持久化](/note/database/redis/redis持久化.md)
   * [Redis事务](/note/database/redis/redis事务.md)
 * **MySQL**
+  * [MySQL主从复制与读写分离](note/database/mysql/MySQL主从复制与读写分离.md)
   * [MySQL事务隔离级别](/note/database/mysql/MySQL事务隔离级别.md)
   * [MySQL存储与索引](/note/database/mysql/MySQL存储与索引.md)
+  * [InnoDB日志机制](note/database/mysql/InnoDB日志.md)
   * [MySQL优化(转载)](https://mp.weixin.qq.com/s?__biz=Mzg2OTA0Njk0OA==&mid=2247485117&idx=1&sn=92361755b7c3de488b415ec4c5f46d73&chksm=cea24976f9d5c060babe50c3747616cce63df5d50947903a262704988143c2eeb4069ae45420&token=79317275&lang=zh_CN#rd)
 * **LeetCode刷题(MySQL)**
   * [LeetCode数据库刷题-1](/note/database/LeetCode刷题.md)
