@@ -1,4 +1,6 @@
-# Hibernate应用实践
+# Hibernate应用实战
+
+[TOC]
 
 ## 一个Hibernate的基本配置
 
@@ -22,780 +24,209 @@
     </dependencies>
 ```
 
-* 一个实体类User，设置好getter和setter，实现Serializable接口
-
-```java
-public class User implements Serializable {
-    private Long id;
-    private String name;
-    private String birthday;
-
-    public User(){}
-
-    public User(Long id, String name){
-        this.id = id;
-        this.name = name;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getBirthday() {
-        return birthday;
-    }
-}
-```
-
-* hibernate.cfg.xml全局配置文件，存放在classpath路径下
+* hibernate.cfg.xml配置
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
 <hibernate-configuration>
     <session-factory>
-        <!-- 连接数据库配置信息 -->
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernate?serverTimezone=UTC</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">123456</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <!-- 配置数据库的可选信息 -->
-        <property name="show_sql">true</property> <!-- 是否显示hibernate生成的sql语句 -->
-        <property name="format_sql">true</property> <!-- 是否规格化输出 -->
-        <property name="hbm2ddl.auto">update</property> <!-- hibernate以何种方式生成DDL -->
         <property name="current_session_context_class">thread</property>
-        <!-- 配置映射文件的位置 -->
-        <mapping resource="User.hbm.xml"/>
-        <!-- 其他的class -->
-        <!-- <mapping ...> -->
+        <property name="show_sql">true</property>
+        <property name="hbm2ddl.auto">update</property>
+        <property name="connection.pool_size">1</property>
+        <property name="format_sql">true</property>
+
+        <!-- 实体类的映射 -->
+        <mapping resource="Class.hbm.xml"/>
+        <mapping resource="Student.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
 ```
 
-* 映射的对象数据库配置文件，将数据库对象与实体对象的属性进行匹配
+## 一对多关联映射
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC
-        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+* 一个t_room表，一个t_person表，表之间的关系如图所示
 
-<hibernate-mapping package="com.ryan">
-    <class name="User" table="user">
-        <id name="id" column="id">
-            <!-- 使用本地数据库的自动增长能力 -->
-            <generator class="native"/>
-        </id>
-        <property name="name" column="name"></property>
-        <property name="birthday" column="birthday"></property>
-    </class>
-</hibernate-mapping>
-```
+<div align=center><img src="/assets/otm.png"></div>
 
-* 将对数据库的操作转化为对实体类的操作
+* 一个Room可以容纳多个Person
 
 ```java
-public class HibernateDemo1 {
-
-    @Test
-    public void test1(){
-        Configuration cfg = new Configuration();
-        cfg.configure();
-        SessionFactory factory = cfg.buildSessionFactory();
-
-        //瞬时态
-        User user = new User();
-        user.setId(2L);
-        user.setName( "wwh");
-        user.setBirthday("19980111");
-
-        Session session = factory.openSession();
-        Transaction transaction = session.beginTransaction();
-        session.save(user);
-        transaction.commit();
-        session.close();
-        factory.close();
-    }
+public class Room implements Serializable {
+    private Integer roomId;
+    private String roomName;
+    private Set<Person> persons = new HashSet<Person>();
+    /*getter and setter*/
 }
 ```
 
-## 一对多的注解配置
-
-* 商品(一的一方)
+* 一个Person一次只能在一个Room
 
 ```java
-@Entity
-@Table(name="t_goods")
-public class GoodsBean {
-
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name="g_id")
-    private int id;
-    @Column(name="g_name")
-    private String name;
-    @Column(name="g_price")
-    private double price;
-    @Column(name="g_type")
-    private String type;
-
-    /*
-     * mappedBy：在一对多关系中，一的一方写，表示有对方维护关联关系，值应该为对方的对象变量
-     * cascade：开启级联
-     */
-    @OneToMany(mappedBy="goods", cascade=CascadeType.ALL)
-    private Set<CommentBean> comSet;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Set<CommentBean> getComSet() {
-        return comSet;
-    }
-
-    public void setComSet(Set<CommentBean> comSet) {
-        this.comSet = comSet;
-    }
-
-    @Override
-    public String toString() {
-        return "GoodsBean [id=" + id + ", name=" + name + ", price=" + price + ", type=" + type + ", comSet=" + comSet
-                + "]";
-    }
-
-}
-
-```
-
-* 评论(多的一方)
-
-```java
-@Entity
-@Table(name="t_stu")
-public class StudentBean {
-
-    private int id;
-    private String name;
-    private ClassBean cla = new ClassBean();;
-
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="s_id")
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    @Column(name="s_name")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-    //指定外键的名称
-    @JoinColumn(name="o_u_id")
-    public ClassBean getCla() {
-        return cla;
-    }
-
-    public void setCla(ClassBean cla) {
-        this.cla = cla;
-    }
-
-    @Override
-    public String toString() {
-        return "StudentBean [id=" + id + ", name=" + name + "]";
-    }
+public class Person implements Serializable {
+    private Integer personId;
+    private String personName;
+    private Room room;
+    /*getter and setter*/
 }
 ```
 
-## 一对多的XML配置
-
-* 一的一方xml配置
+* Person.hbm.xml
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.mengma.onetomany.Grade" table="grade">
-        <id name="id" column="id">
-            <generator class="native" />
+    <class name="Person" table="t_person">
+        <id name="personId" column="person_id">
+            <generator class="native"/>
         </id>
-        <property name="name" column="name" length="40" />
-        <!-- 一对多的关系使用set集合映射 -->
-        <set name="students">
-            <!-- 确定关联的外键列 -->
-            <key column="gid" />
-            <!-- 映射到关联类属性 -->
-            <one-to-many class="com.mengma.onetomany.Student" />
+        <property name="personName" column="person_name"/>
+        <many-to-one name="room" class="Room" column="room_id"/>
+    </class>
+</hibernate-mapping>
+```
+
+* Room.hbm.xml
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="Room" table="t_room">
+        <id name="roomId" column="room_id">
+            <generator class="native"/>
+        </id>
+        <property name="roomName" column="room_name"/>
+        <set name="persons">
+            <key column="room_id"/>
+            <one-to-many class="Person"/>
         </set>
     </class>
 </hibernate-mapping>
 ```
 
-* 多的一方xml配置
+**一对多的级联操作的时候，为了照顾性能，一般将一的一方放弃外键维护，因为hibernate是双向维护外键**
+
+## 多对多关联映射
+
+* 一个t_role表，一个t_user表
+
+<div align=center><img src="/assets/mtm.png"></div>
+
+* 一个User可能会有多个Role
+
+```java
+public class User implements Serializable {
+    private Integer user_id;
+    private String user_name;
+    private String user_password;
+    private Set<Role> setRole = new HashSet<Role>();
+    /*getter and setter*/
+}
+```
+
+* 一个Role可能会有多个User
+
+```java
+public class Role implements Serializable {
+    private Integer role_id;
+    private String role_name;
+    private String role_memo;
+    private Set<User> setUser = new HashSet<User>();
+    /*getter and setter*/
+}
+```
+
+* User.hbm.xml
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
 <hibernate-mapping>
-    <class name="com.mengma.onetomany.Student" table="student">
-        <id name="id" column="id">
-            <generator class="native" />
+    <class name="manytomany.User" table="t_user">
+        <id name="user_id" column="user_id">
+            <generator class="native"/>
         </id>
-        <property name="name" column="name" length="40" />
-        <!-- 多对一关系映射 -->
-        <many-to-one name="grade" class="com.mengma.onetomany.Grade"></many-to-one>
+        <property name="user_name" column="user_name"/>
+        <property name="user_password" column="user_password"/>
+        <set name="setRole" table="user_role" >
+            <key column="user_id"/>
+            <many-to-many class="manytomany.Role" column="role_id"/>
+        </set>
     </class>
 </hibernate-mapping>
 ```
 
-## 双向一对多
+* Role.hbm.xml
 
-* Product类
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
-```java
-@Entity
-@Table(name = "t_product")
-public class Product {
-  @Id
-  @GeneratedValue
-  private Long id;
-  private String name;
-  // 多对一
-  // optional=false表示外键type_id不能为空
-  @ManyToOne(optional = true)
-  @JoinColumn(name = "type_id")
-  private ProductType type;
-
-  public Product() {
-
-  }
-
-  public Product(String name, ProductType type) {
-    this.name = name;
-    this.type = type;
-  }
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public ProductType getType() {
-    return type;
-  }
-
-  public void setType(ProductType type) {
-    this.type = type;
-  }
-
-  @Override
-  public String toString() {
-    return "Product [id=" + id + ", name=" + name + "]";
-  }
-
-}
+<hibernate-mapping>
+    <class name="manytomany.Role" table="t_role">
+        <id name="role_id" column="role_id">
+            <generator class="native"/>
+        </id>
+        <property name="role_name" column="role_name"/>
+        <property name="role_memo" column="role_memo"/>
+        <set name="setUser" table="user_role" >
+            <key column="role_id"/>
+            <many-to-many class="manytomany.User" column="user_id"/>
+        </set>
+    </class>
+</hibernate-mapping>
 ```
 
-* ProductType
+### 多对多的级联删除
 
-```java
-@Entity
-@Table(name = "t_product_type")
-public class ProductType {
-  @Id
-  @GeneratedValue
-  private Long id;
-  private String name;
-  // 一对多:集合Set
-  @OneToMany(mappedBy = "type", orphanRemoval = true)
-  private Set<Product> products = new HashSet<Product>();
+上述配置的方法无法处理级联形式的插入和删除，必须配置`<cascade>`，以Role.hbm.xml为例
 
-  public Long getId() {
-    return id;
-  }
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public Set<Product> getProducts() {
-    return products;
-  }
-
-  public void setProducts(Set<Product> products) {
-    this.products = products;
-  }
-
-  @Override
-  public String toString() {
-    return "ProductType [id=" + id + ", name=" + name + "]";
-  }
-
-}
+<hibernate-mapping>
+    <class name="manytomany.Role" table="t_role">
+        <id name="role_id" column="role_id">
+            <generator class="native"/>
+        </id>
+        <property name="role_name" column="role_name"/>
+        <property name="role_memo" column="role_memo"/>
+        <set name="setUser" table="user_role" cascade="all"> <!-- 配置级联权限 -->
+            <key column="role_id"/>
+            <many-to-many class="manytomany.User" column="user_id"/>
+        </set>
+    </class>
+</hibernate-mapping>
 ```
 
-## 单向多对多
+### 多对多的维护是通过第三张表进行的
 
-* Student
-
-```java
-@Entity
-@Table(name = "t_student")
-public class Student {
-  @Id
-  @GeneratedValue
-  private Long id;
-  private String sname;
-
-  public Student() {
-
-  }
-
-  public Student(String sname) {
-    this.sname = sname;
-  }
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public String getSname() {
-    return sname;
-  }
-
-  public void setSname(String sname) {
-    this.sname = sname;
-  }
-
-  @Override
-  public String toString() {
-    return "Student [id=" + id + ", sname=" + sname + "]";
-  }
-}
-```
-
-* Teacher
+假定Role和User是多对多的关系，假定有个User叫lucy,有个Role叫老师，为了让lucy具有老师的角色，利用第三张表user_role中来维护，具体hibernate操作为:
 
 ```java
-@Entity
-@Table(name = "t_teacher")
-public class Teacher {
-  @Id
-  @GeneratedValue
-  private Long id;
-  private String tname;
-  // @ManyToMany注释表示Teacher是多对多关系的一端。
-  // @JoinTable描述了多对多关系的数据表关系。name属性指定中间表名称，joinColumns定义中间表与Teacher表的外键关系。
-  // 中间表Teacher_Student的Teacher_ID列是Teacher表的主键列对应的外键列，inverseJoinColumns属性定义了中间表与另外一端(Student)的外键关系。
-  @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-  @JoinTable(name = "t_teacher_student", joinColumns = { @JoinColumn(name = "teacher_id") }, inverseJoinColumns = {
-        @JoinColumn(name = "student_id") })
-  private Set<Student> students = new HashSet<Student>();
+User lucy = (User) session.get(User.class, lucy_id);
+Role teacher = (Role) session.get(Role.class, teacher_id);
 
-  public Teacher() {
-
-  }
-
-  public Teacher(String tname) {
-    this.tname = tname;
-  }
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public String getTname() {
-    return tname;
-  }
-
-  public void setTname(String tname) {
-    this.tname = tname;
-  }
-
-  public Set<Student> getStudents() {
-    return students;
-  }
-
-  public void setStudents(Set<Student> students) {
-    this.students = students;
-  }
-
-  @Override
-  public String toString() {
-    return "Teacher [id=" + id + ", tname=" + tname + "]";
-  }
-}
-```
-
-## 双向多对多
-
-* Student
-
-```java
-@Entity
-@Table(name = "t_student")
-public class Student {
-  @Id
-  @GeneratedValue
-  private Long id;
-  private String sname;
-  @ManyToMany(mappedBy = "students")
-  private Set<Teacher> teachers = new HashSet<Teacher>();
-
-  public Student() {
-
-  }
-
-  public Student(String sname) {
-    this.sname = sname;
-  }
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public String getSname() {
-    return sname;
-  }
-
-  public void setSname(String sname) {
-    this.sname = sname;
-  }
-
-  public Set<Teacher> getTeachers() {
-    return teachers;
-  }
-
-  public void setTeachers(Set<Teacher> teachers) {
-    this.teachers = teachers;
-  }
-
-  @Override
-  public String toString() {
-    return "Student [id=" + id + ", sname=" + sname + "]";
-  }
-
-}
-```
-
-* Teacher
-
-```java
-@Entity
-@Table(name = "t_teacher")
-public class Teacher {
-  @Id
-  @GeneratedValue
-  private Long id;
-  private String tname;
-  // @ManyToMany注释表示Teacher是多对多关系的一端。
-  // @JoinTable描述了多对多关系的数据表关系。name属性指定中间表名称，joinColumns定义中间表与Teacher表的外键关系。
-  // 中间表Teacher_Student的Teacher_ID列是Teacher表的主键列对应的外键列，inverseJoinColumns属性定义了中间表与另外一端(Student)的外键关系。
-  @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-  @JoinTable(name = "t_teacher_student", joinColumns = { @JoinColumn(name = "teacher_id") }, inverseJoinColumns = {
-      @JoinColumn(name = "student_id") })
-  private Set<Student> students = new HashSet<Student>();
-
-  public Teacher() {
-
-  }
-
-  public Teacher(String tname) {
-    this.tname = tname;
-  }
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public String getTname() {
-    return tname;
-  }
-
-  public void setTname(String tname) {
-    this.tname = tname;
-  }
-
-  public Set<Student> getStudents() {
-    return students;
-  }
-
-  public void setStudents(Set<Student> students) {
-    this.students = students;
-  }
-
-  @Override
-  public String toString() {
-    return "Teacher [id=" + id + ", tname=" + tname + "]";
-  }
-}
-```
-
-## 双向一对一共享主键
-
-* Person
-
-```java
-@Entity
-@Table(name = "t_person")
-public class Person {
-  @Id
-  @GeneratedValue
-  private Long id;
-  private String name;
-  // mappedBy配置映射关系:当前对象IdCard属于哪个person对象
-  @OneToOne(optional = false, mappedBy = "person", fetch = FetchType.LAZY)
-  private IdCard idCard;
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public IdCard getIdCard() {
-    return idCard;
-  }
-
-  public void setIdCard(IdCard idCard) {
-    this.idCard = idCard;
-  }
-
-}
-```
-
-* IdCard
-
-```java
-@Entity
-@Table(name = "t_idcard")
-public class IdCard {
-  @Id
-  @GeneratedValue(generator = "pkGenerator")
-  @GenericGenerator(name = "pkGenerator", strategy = "foreign", parameters = @Parameter(name = "property", value = "person"))
-  private Long id;
-  @Column(length = 18)
-  private String cardNo;
-  @OneToOne(optional = false, fetch = FetchType.LAZY)
-  // 如果不加这个注解，添加t_idcard信息时，就会自动在t_idcard表中增加了一个外键person_id
-  @PrimaryKeyJoinColumn
-  private Person person;
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public String getCardNo() {
-    return cardNo;
-  }
-
-  public void setCardNo(String cardNo) {
-    this.cardNo = cardNo;
-  }
-
-  public Person getPerson() {
-    return person;
-  }
-
-  public void setPerson(Person person) {
-    this.person = person;
-  }
-
-}
-```
-
-## 双向一对一唯一外键
-
-* Person
-
-```java
-@Entity
-@Table(name = "t_person")
-public class Person {
-  @Id
-  @GeneratedValue
-  private Long id;
-  private String name;
-  // mappedBy配置映射关系:当前对象IdCard属于哪个person对象
-  @OneToOne(optional = false, mappedBy = "person", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-  private IdCard idCard;
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public IdCard getIdCard() {
-    return idCard;
-  }
-
-  public void setIdCard(IdCard idCard) {
-    this.idCard = idCard;
-  }
-
-}
-```
-
-* IdCard
-
-```java
-@Entity
-@Table(name = "t_idcard")
-public class IdCard {
-  @Id
-  @GeneratedValue
-  private Long id;
-  @Column(length = 18)
-  private String cardNo;
-  // 默认值optional = true表示idcard_id可以为空;反之。。。
-  @OneToOne(optional = false, fetch = FetchType.LAZY)
-  @JoinColumn(name = "person_id", unique = true)
-  // unique=true确保了一对一关系
-  private Person person;
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public String getCardNo() {
-    return cardNo;
-  }
-
-  public void setCardNo(String cardNo) {
-    this.cardNo = cardNo;
-  }
-
-  public Person getPerson() {
-    return person;
-  }
-
-  public void setPerson(Person person) {
-    this.person = person;
-  }
-}
+lucy.getRoleSet().add(teacher);
 ```
 
 ## 参考链接

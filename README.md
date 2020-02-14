@@ -30,7 +30,7 @@
   * [SpringMVC](./note/web/spring/SpringMVC.md)
   * [Spring Bean解析和注册过程](/note/web/spring/Spring-Bean解析注册.md)
 * **持久化技术**
-  * [Hibernate应用实践](/note/web/orm/hibernate/Hibernate应用实践)
+  * [Hibernate应用实践](note/web/orm/hibernate/Hibernate应用实践.md)
 
 ### :penguin:Java并发
 
@@ -83,3 +83,4 @@
 * [Java高强度训练Day1](note/Q&A/Java高强度训练Day1.md)
 * [Java高强度训练Day2](note/Q&A/Java高强度训练Day2.md)
 * [Java高强度训练Day3](note/database/mysql/Java高强度训练Day3.md)
+* [JSP高强度训练Day1](note/Q&A/JSP高强度训练Day1.md)
