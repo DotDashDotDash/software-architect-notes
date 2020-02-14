@@ -31,6 +31,7 @@
   * [Spring Bean解析和注册过程](/note/web/spring/Spring-Bean解析注册.md)
 * **持久化技术**
   * [Hibernate应用实践](note/web/orm/hibernate/Hibernate应用实践.md)
+  * [MyBatis应用实践](note/web/orm/mybatis/MyBatis应用实践.md)
 
 ### :penguin:Java并发
 
