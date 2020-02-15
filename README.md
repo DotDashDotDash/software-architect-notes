@@ -32,6 +32,7 @@
 * **持久化技术**
   * [Hibernate应用实践](note/web/orm/hibernate/Hibernate应用实践.md)
   * [MyBatis应用实践](note/web/orm/mybatis/MyBatis应用实践.md)
+  * [MyBatis连接池原理](note/web/orm/mybatis/MyBatis连接池.md)
 
 ### :penguin:Java并发
 

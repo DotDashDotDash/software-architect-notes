@@ -1,7 +1,4 @@
-MyBatis应用实践
-===
-
-[TOC]
+# MyBatis应用实践
 
 ## MyBatis环境搭建及入门案例
 
@@ -116,55 +113,63 @@ public interface UserMapperAnnotation {
 }
 ```
 
-## MyBatis CRUD操作
+## MyBatis事务配置
 
-### 单表保存
+MyBatis是通过SqlSession的`commit()`和`rollback()`方法
 
-在接口中声明保存方法
+打开自动事务提交功能(平常开发不推荐使用)
 
 ```java
-public interface UserMapper {
-    List<User> findAllUsers();
-    List<User> findOneUser(String username);
-    void saveUser(User user);
+Session sqlSession = factory.openSession(true);
+```
+
+## MyBatis ORM问题
+
+场景: 表的列名和需要封装的实体类的属性名称不一致
+
+假定ModifiedUser定义如下:
+
+```java
+public class ModifiedUser implements Serializable {
+    private Integer userId;
+    private String userName;
+    private Integer userAge;
+    /*getter and setter*/
 }
 ```
 
-更新Mapper拦截的接口方法
-
 ```xml
-<insert id="saveUser" parameterType="dao.User">
-    INSERT INTO user VALUES(#{id}, #{name}, #{age})
-</insert>
+<!-- 设定别名，匹配表的列名和实体类的属性名一致 -->
+<select id="findAllModifiedUsers" resultType="dao.ModifiedUser">
+        SELECT id as userId, name as userName, age as userAge
+        FROM user
+</select>
+
+<!-- 或者设置resultMap一次匹配完 -->
+<resultMap id="modifiedUserMap" type="dao.ModifiedUser">
+        <!-- 主键对应的字段 -->
+        <id property="userId" column="id"/>
+        <!-- 非主键对应的字段 -->
+        <result property="userName" column="name"/>
+        <result property="userAge" column="age"/>
+</resultMap>
 ```
 
-执行save操作
+### MyBatis标签
 
-```java
-public void $save() throws IOException{
-        InputStream in = Resources.getResourceAsStream("SqlMapConfig.xml");
-        SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
-        SqlSessionFactory factory = builder.build(in);
-        SqlSession session = factory.openSession();
-
-        UserMapper userMapper = session.getMapper(UserMapper.class);
-
-        User user = new User();
-        user.setId(5);
-        user.setName("王焱");
-        user.setAge(23);
-
-        userMapper.saveUser(user);
-
-        //事务一定要提交，不然写入不进数据库
-        session.commit();
-    }
-```
-
-### 模糊查询
+* `if`标签
 
 ```xml
-<select id="findByLikeName" parameterType="string" resultType="dao.User">
-        SELECT * FROM user WHERE username LIKE #{name}
-    </select>
+<select id="findOneUser" parameterType="dao.User" resultType="dao.User">
+        SELECT * FROM user  WHERE 1 = 1
+        <if test="name != null">
+            AND name = #{name}
+        </if>
+</select>
+```
+
+* `where`标签
+
+```xml
+
 ```
