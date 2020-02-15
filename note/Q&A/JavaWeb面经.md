@@ -245,3 +245,12 @@ Servlet运行与服务器进程中，一个Servlet可以处理多个请求，而
 * Cookie是服务器生成给客户端，存在于客户端的浏览器当中保存的
 * Session是存放在服务器端用于标识用户的
 * 浏览器禁用Cookie若要保持Session会话中的内容，要通过encodeURL或者encodeRedirectURL来保持数据的共享
+
+## 21. web请求url中`/`和`/*`的区别
+
+* **`/`**: 会匹配到`/login`这样的路径，不会匹配`*.jsp`这样的路径
+* **`/*`**: 可以匹配到`login.jsp`这样的路径，匹配所有的url
+
+## 22. 如何统计某次http请求的响应时间
+
+设置拦截器，preHandle和afterHandle的时间差即为请求的响应时间
