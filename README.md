@@ -19,7 +19,7 @@
 ### :computer: Java虚拟机
 
 * [ClassLoader](./note/jvm/Java类加载器.md)
-* [JVM架构](./note/jvm/JVM结构.md)
+* [男子沉迷JVM内存结构被紧急送医](note/jvm/JVM内存区域.md)
 
 ### :cloud: Web
 
