@@ -5,11 +5,10 @@
 
 </div><br>
 
-<div align=center><img src="/assets/profile.jfif" width="200px"></div>
+<div align=center><img src="/assets/profile.jpg"/></div>
 
 ### :computer: Java虚拟机
 
-* [ClassLoader](./note/jvm/Java类加载器.md)
 * [Java虚拟机内存结构](note/jvm/JVM内存区域.md)
 * [String和常量池](note/jvm/String和常量池的苟且关系.md)
 
