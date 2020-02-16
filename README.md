@@ -1,10 +1,3 @@
-<div align=center>
-
-| [:computer:](./note/jvm)<br>&nbsp;Java虚拟机&nbsp;|[:penguin:](./note/concurrent)<br>&nbsp;并发编程&nbsp;|[:cloud:](./note/web)<br>&nbsp;Web&nbsp;|[:lock:](../note/database)<br>&nbsp;数据库&nbsp;|[:rotating_light:](./FAQ)<br>&nbsp;高强度训练&nbsp;|[:book:](./doc)<br>&nbsp;面试指南&nbsp;|[:triangular_flag_on_post:](./note/distribution)<br>&nbsp;分布式&nbsp;|
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-
-</div><br>
-
 <div align=center><img src="/assets/profile.jpg"/> </div>
 
 ## 目录
