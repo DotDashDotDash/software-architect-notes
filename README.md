@@ -1,20 +1,11 @@
 <div align=center>
 
-|[:coffee:](./note/basic)<br>&nbsp;Java核心&nbsp;| [:computer:](./note/jvm)<br>&nbsp;Java虚拟机&nbsp;|[:penguin:](./note/concurrent)<br>&nbsp;并发编程&nbsp;|[:cloud:](./note/web)<br>&nbsp;Web&nbsp;|[:lock:](../note/database)<br>&nbsp;数据库&nbsp;|[:rotating_light:](./FAQ)<br>&nbsp;高强度训练&nbsp;|[:book:](./doc)<br>&nbsp;面经&nbsp;|[:triangular_flag_on_post:](./note/distribution)<br>&nbsp;分布式&nbsp;|
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| [:computer:](./note/jvm)<br>&nbsp;Java虚拟机&nbsp;|[:penguin:](./note/concurrent)<br>&nbsp;并发编程&nbsp;|[:cloud:](./note/web)<br>&nbsp;Web&nbsp;|[:lock:](../note/database)<br>&nbsp;数据库&nbsp;|[:rotating_light:](./FAQ)<br>&nbsp;高强度训练&nbsp;|[:book:](./doc)<br>&nbsp;面试指南&nbsp;|[:triangular_flag_on_post:](./note/distribution)<br>&nbsp;分布式&nbsp;|
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 
 </div><br>
 
 <div align=center><img src="/assets/profile.jfif" width="200px"></div>
-
-### :coffee: Java核心
-
-* [Java反射机制](./note/basic/Java反射.md)
-* [Java泛型](./note/basic/Java泛型.md)
-* [Java序列化](./note/basic/序列化.md)
-* [Java深/浅拷贝](./note/basic/Java拷贝.md)
-* [Java注解(重点继承性)](/note/basic/注解.md)
-* [设计模式](/note/basic/设计模式.md)
 
 ### :computer: Java虚拟机
 
@@ -61,7 +52,7 @@
   * [LeetCode数据库刷题-1](/note/database/LeetCode刷题.md)
   * [LeetCode数据库付费题目](/note/database/LeetCode付费题目.md)
 
-### :book:面经
+### :book:面试指南
 
 * [JavaSE 面经](note/Q&A/JavaSE-集合面经.md)
 * [JavaWeb 面经](note/Q&A/JavaWeb面经.md)
@@ -70,10 +61,3 @@
 * [Hibernate 面经](/note/web/orm/hibernate/Hibernate知识点梳理.md)
 * [数据库面经](note/database/mysql/数据库面经.md)
 * [Redis面经](note/Q&A/Redis面经.md)
-
-### :rotating_light: 高强度集训
-
-* [Java高强度训练Day1](note/Q&A/Java高强度训练Day1.md)
-* [Java高强度训练Day2](note/Q&A/Java高强度训练Day2.md)
-* [Java高强度训练Day3](note/database/mysql/Java高强度训练Day3.md)
-* [JSP高强度训练Day1](note/Q&A/JSP高强度训练Day1.md)
