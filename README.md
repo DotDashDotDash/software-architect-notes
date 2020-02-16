@@ -20,6 +20,7 @@
 
 * [ClassLoader](./note/jvm/Java类加载器.md)
 * [男子沉迷JVM内存结构被紧急送医](note/jvm/JVM内存区域.md)
+* [String和常量池的苟且关系](note/jvm/String和常量池的苟且关系.md)
 
 ### :cloud: Web
 
