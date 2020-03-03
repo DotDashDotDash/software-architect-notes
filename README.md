@@ -12,9 +12,6 @@
 
 ### :cloud: Web
 
-* [JavaWeb三大组件之Servlet](/note/JavaWeb三大组件之Servlet.md)
-* [JavaWeb三大组件之Filter](/note/JavaWeb三大组件之Filter.md)
-* [JavaWeb三大组件之Lisntener](/note/JavaWeb三大组件之Listener.md)
 * [JavaWeb面试题汇总](note/JavaWeb面经.md)
 * **Spring**
   * [SpringMVC](/note/SpringMVC.md)
