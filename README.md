@@ -1,5 +1,3 @@
-<div align=center><img src="/assets/profile.jpg"/> </div>
-
 ## 目录
 
 -----
@@ -35,6 +33,7 @@
 * [ZooKeeper应用场景](note/ZooKeeper应用场景.md)
 * [ZooKeeper&Paxos进阶(转载)](https://github.com/Snailclimb/JavaGuide/blob/master/docs/system-design/framework/ZooKeeper-plus.md)
 * [Netty入门——Reactor反应者模式](note/Reactor入门(一).md)
+* [Netty入门——原理与应用](note/Netty原理与基础.md)
 * [FutureTask, Guava异步回调模式](/note/异步回调模式.md)
 
 ### :lock:数据库
