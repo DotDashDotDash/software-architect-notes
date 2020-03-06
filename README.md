@@ -27,14 +27,18 @@
 
 ### :triangular_flag_on_post:分布式高并发
 
-* [并发编程入门](note/Java并发.md)
-* [分布式一致性](/note/分布式一致性.md)
-* [ZooKeeper入门](/note/ZooKeeper入门.md)
-* [ZooKeeper应用场景](note/ZooKeeper应用场景.md)
-* [ZooKeeper&Paxos进阶(转载)](https://github.com/Snailclimb/JavaGuide/blob/master/docs/system-design/framework/ZooKeeper-plus.md)
+* **分布式基础**
+  * [并发编程入门](note/Java并发.md)
+  * [分布式一致性](/note/分布式一致性.md)
+* **ZooKeeper**
+  * [ZooKeeper入门](/note/ZooKeeper入门.md)
+  * [ZooKeeper应用场景](note/ZooKeeper应用场景.md)
+  * [ZooKeeper&Paxos进阶(转载)](https://github.com/Snailclimb/JavaGuide/blob/master/docs/system-design/framework/ZooKeeper-plus.md)
+* **Netty**
 * [Netty入门——Reactor反应者模式](note/Reactor入门(一).md)
 * [Netty入门——原理与应用](note/Netty原理与基础.md)
-* [FutureTask, Guava异步回调模式](/note/异步回调模式.md)
+* **高并发分布式常用机制**
+  * [FutureTask, Guava异步回调模式](/note/异步回调模式.md)
 
 ### :lock:数据库
 
