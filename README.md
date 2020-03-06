@@ -37,6 +37,7 @@
 * **Netty** 
   * [Netty入门——Reactor反应者模式](note/Reactor入门(一).md)
   * [Netty入门——原理与应用](note/Netty原理与基础.md)
+  * [Netty内存泄漏罪魁祸首ByteBuf](note/Netty组件之ByteBuf.md)
 * **高并发分布式常用机制**
   * [FutureTask, Guava异步回调模式](/note/异步回调模式.md)
 
