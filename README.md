@@ -56,4 +56,9 @@
   * [MySQL优化(转载)](https://mp.weixin.qq.com/s?__biz=Mzg2OTA0Njk0OA==&mid=2247485117&idx=1&sn=92361755b7c3de488b415ec4c5f46d73&chksm=cea24976f9d5c060babe50c3747616cce63df5d50947903a262704988143c2eeb4069ae45420&token=79317275&lang=zh_CN#rd)
   * [MySQL面试题汇总](note/数据库面经.md)
 
+### :book: 源码阅读
+
+* **Redis**
+  * [Redis字典源码阅读](doc/redis字典.md)
+
 ----
