@@ -60,5 +60,5 @@
 
 * **Redis**
   * [Redis字典源码阅读](doc/redis字典.md)
-
+  * [Redis跳表skiplist性能分析(精彩好文)](https://juejin.im/post/57fa935b0e3dd90057c50fbc)
 ----
