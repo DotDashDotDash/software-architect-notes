@@ -42,6 +42,7 @@
   * [FutureTask, Guava异步回调模式](/note/异步回调模式.md)
 * **负载均衡**
   * [Ribbon负载均衡](note/Ribbon负载均衡.md)
+  * [SpringCloud Feign](https://www.jianshu.com/p/59295c91dde7)
 
 ### :lock:数据库
 
