@@ -40,6 +40,8 @@
   * [Netty内存泄漏罪魁祸首ByteBuf](note/Netty组件之ByteBuf.md)
 * **高并发分布式常用机制**
   * [FutureTask, Guava异步回调模式](/note/异步回调模式.md)
+* **负载均衡**
+  * [Ribbon负载均衡](note/Ribbon负载均衡.md)
 
 ### :lock:数据库
 
