@@ -38,8 +38,9 @@
   * [Netty入门——Reactor反应者模式](note/Reactor入门(一).md)
   * [Netty入门——原理与应用](note/Netty原理与基础.md)
   * [Netty内存泄漏罪魁祸首ByteBuf](note/Netty组件之ByteBuf.md)
-* **高并发分布式常用机制**
+* **高并发分布式**
   * [FutureTask, Guava异步回调模式](/note/异步回调模式.md)
+  * [Hystrix熔断/降级/限流](note/Hystrix原理与实战.md)
 * **负载均衡**
   * [Ribbon负载均衡](note/Ribbon负载均衡.md)
   * [SpringCloud Feign](https://www.jianshu.com/p/59295c91dde7)
