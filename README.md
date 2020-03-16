@@ -8,15 +8,23 @@
 * [String和常量池](note/String和常量池的苟且关系.md)
 * [JavaSE面试题汇总](note/JavaSE-集合面经.md)
 
-### :cloud: Web
+### :leaves:Spring
 
-* **Web基础**
-  * [JavaWeb面试题汇总](note/JavaWeb面经.md)
 * **Spring Security**
   * [[简易图解OAuth2.0]猴子都能看懂的图解](https://learnku.com/articles/20031)
-* **持久化技术**
+* **Spring Cloud**
+  * [外行人都能看懂的SpringCloud(转载)](https://mp.weixin.qq.com/s/MJrahcDXwxgDr5zBdO3XWw)
+  * [SpringCloud Feign使用详解](https://www.jianshu.com/p/59295c91dde7)
+  * [Ribbon负载均衡](note/Ribbon负载均衡.md)
+  * [Hystrix熔断/降级/限流](note/Hystrix原理与实战.md)
+  * [SpringCloud Alibaba Sentinel流量卫兵I](note/Sentinel入门.md)
+
+### :cloud: 数据持久化
+
+* **Hibernate**
   * [Hibernate应用实践](note/Hibernate应用实践.md)
   * [Hibernate面试题汇总](/note/Hibernate知识点梳理.md)
+* **MyBatis**
   * [MyBatis应用实践](note/MyBatis应用实践.md)
   * [MyBatis连接池原理](note/MyBatis连接池.md)
   * [MyBatis面试题汇总](/note/MyBatis面试题总结.md)
@@ -35,13 +43,7 @@
   * [Netty入门——Reactor反应者模式](note/Reactor入门(一).md)
   * [Netty入门——原理与应用](note/Netty原理与基础.md)
   * [Netty内存泄漏罪魁祸首ByteBuf](note/Netty组件之ByteBuf.md)
-* **高并发分布式微服务**
-  * [外行人都能看懂的SpringCloud(转载)](https://mp.weixin.qq.com/s/MJrahcDXwxgDr5zBdO3XWw)
   * [FutureTask, Guava异步回调模式](/note/异步回调模式.md)
-  * [Ribbon负载均衡](note/Ribbon负载均衡.md)
-  * [SpringCloud Feign](https://www.jianshu.com/p/59295c91dde7)
-  * [Hystrix熔断/降级/限流](note/Hystrix原理与实战.md)
-  * [SpringCloud Alibaba Sentinel流量卫兵I](note/Sentinel入门.md)
 
 ### :lock:数据库
 
@@ -67,5 +69,6 @@
 ### :house:企业生产业务场景
 
 * [How to enable request scope in async task executor](https://stackoverflow.com/questions/23732089/how-to-enable-request-scope-in-async-task-executor)
+* [同账号多设备登录被迫下线](https://www.bilibili.com/video/av76522147?p=12)
 
 ----
