@@ -12,6 +12,7 @@
 
 * **Spring Security**
   * [[简易图解OAuth2.0]猴子都能看懂的图解](https://learnku.com/articles/20031)
+  * [OAuth2.0 四大授权模式](https://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)
 * **Spring Cloud**
   * [外行人都能看懂的SpringCloud(转载)](https://mp.weixin.qq.com/s/MJrahcDXwxgDr5zBdO3XWw)
   * [SpringCloud Feign使用详解](https://www.jianshu.com/p/59295c91dde7)
