@@ -14,11 +14,10 @@
   * [[简易图解OAuth2.0]猴子都能看懂的图解](https://learnku.com/articles/20031)
   * [OAuth2.0 四大授权模式](https://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)
 * **Spring Cloud**
-  * [外行人都能看懂的SpringCloud(转载)](https://mp.weixin.qq.com/s/MJrahcDXwxgDr5zBdO3XWw)
-  * [SpringCloud Feign使用详解](https://www.jianshu.com/p/59295c91dde7)
-  * [Ribbon负载均衡](note/Ribbon负载均衡.md)
   * [Hystrix熔断/降级/限流](note/Hystrix原理与实战.md)
   * [SpringCloud Alibaba Sentinel流量卫兵I](note/Sentinel入门.md)
+  * [外行人都能看懂的SpringCloud(转载)](https://mp.weixin.qq.com/s/MJrahcDXwxgDr5zBdO3XWw)
+  * [Feign使用详解(转载)](https://www.jianshu.com/p/59295c91dde7)
 
 ### :cloud: 数据持久化
 
@@ -45,6 +44,8 @@
   * [Netty入门——原理与应用](note/Netty原理与基础.md)
   * [Netty内存泄漏罪魁祸首ByteBuf](note/Netty组件之ByteBuf.md)
   * [FutureTask, Guava异步回调模式](/note/异步回调模式.md)
+* **消息队列MQ**
+  * [RocketMQ实战](/note/RocketMQ实战.md)
 
 ### :lock:数据库
 
