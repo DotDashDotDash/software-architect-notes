@@ -40,7 +40,7 @@
   * [ZooKeeper入门](/note/ZooKeeper入门.md)
   * [ZooKeeper应用场景](note/ZooKeeper应用场景.md)
   * [ZooKeeper&Paxos进阶(转载)](https://github.com/Snailclimb/JavaGuide/blob/master/docs/system-design/framework/ZooKeeper-plus.md)
-* **Netty** 
+* **Netty**
   * [Netty入门——Reactor反应者模式](note/Reactor入门(一).md)
   * [Netty入门——原理与应用](note/Netty原理与基础.md)
   * [Netty内存泄漏罪魁祸首ByteBuf](note/Netty组件之ByteBuf.md)
@@ -66,10 +66,3 @@
 * **Redis**
   * [Redis字典源码阅读](doc/redis字典.md)
   * [Redis跳表skiplist性能分析(精彩好文)](https://juejin.im/post/57fa935b0e3dd90057c50fbc)
-
-### :house:企业生产业务场景
-
-* [How to enable request scope in async task executor](https://stackoverflow.com/questions/23732089/how-to-enable-request-scope-in-async-task-executor)
-* [同账号多设备登录被迫下线](https://www.bilibili.com/video/av76522147?p=12)
-
-----
