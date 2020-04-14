@@ -14,7 +14,6 @@
 * **Spring Cloud**
   * [Hystrix熔断/降级/限流](note/Hystrix原理与实战.md)
   * [SpringCloud Alibaba Sentinel流量卫兵I](note/Sentinel入门.md)
-  * [外行人都能看懂的SpringCloud(转载)](https://mp.weixin.qq.com/s/MJrahcDXwxgDr5zBdO3XWw)
   * [Feign使用详解(转载)](https://www.jianshu.com/p/59295c91dde7)
 
 ### :cloud: 数据持久化
