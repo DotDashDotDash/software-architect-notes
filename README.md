@@ -11,8 +11,6 @@
 ### :leaves:Spring
 
 * **Spring Security**
-  * [[简易图解OAuth2.0]猴子都能看懂的图解](https://learnku.com/articles/20031)
-  * [OAuth2.0 四大授权模式](https://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)
 * **Spring Cloud**
   * [Hystrix熔断/降级/限流](note/Hystrix原理与实战.md)
   * [SpringCloud Alibaba Sentinel流量卫兵I](note/Sentinel入门.md)
