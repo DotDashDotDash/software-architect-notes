@@ -45,7 +45,7 @@
   * [Netty内存泄漏罪魁祸首ByteBuf](note/Netty组件之ByteBuf.md)
   * [FutureTask, Guava异步回调模式](/note/异步回调模式.md)
 * **消息队列MQ**
-  * [RocketMQ实战](/note/RocketMQ实战.md)
+  * [SpringBoot RocketMQ快速入门(实战篇)](/note/SpringBoot%20RocketMQ快速入门.md)
 
 ### :lock:数据库
 
