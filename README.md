@@ -44,6 +44,7 @@
 * **消息队列MQ**
   * [SpringBoot RocketMQ快速入门(实战篇)](/note/SpringBoot%20RocketMQ快速入门.md)
   * [RocketMQ消息原理篇](/note/RocketMQ消息原理篇.md)
+  * [从RocketMQ事务消息看并发性能优化](/note/从RocketMQ事务消息看并发性能优化.md)
 
 ### :lock:数据库
 
