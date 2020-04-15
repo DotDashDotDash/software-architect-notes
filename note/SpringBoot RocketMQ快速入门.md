@@ -114,7 +114,7 @@ RocketMQTemplate 类，它继承 Spring Messaging 定义的 AbstractMessageSendi
 
 RocketMQ-Spring 的默认使用 MappingJackson2MessageConverter 或 MappingFastJsonMessageConverter ，即使用 JSON 格式序列化和反序列化 Message 消息内容。
 
-### 自定义消息监听器Listener
+### 自定义消息消费者Consumer
 
 ```java
 @Component
@@ -135,3 +135,156 @@ public class MyMessageListener implements RocketMQListener<MyMessage>{
   * 每个消费者分组职责单一，只消费一个 Topic 。
   * 每个消费者分组是独占一个线程池，这样能够保证多个 Topic 隔离在不同线程池，保证隔离性，从而避免一个 Topic 消费很慢，影响到另外的 Topic 的消费。
 * 实现 RocketMQListener 接口，在 T 泛型里，设置消费的消息对应的类。此处，我们就设置了 MyMessage 类。
+
+还有一种扩展的消息消费者的实现:
+
+```java
+@Component
+@RocketMQMessageListener(
+    topic = MyMessage.TOPIC,
+    consumerGroup = "consumer-group-" + MyMessage.TOPIC
+)
+public class MyMessageListener implements RocketMQListener<MessageExt>{
+
+    @Override
+    public void onMessage(MyMessage msg){
+        //处理监听逻辑
+    }
+}
+```
+
+使用MessageExt扩展自定义Message，能够获取到更多消息的信息，例如所属队列，创建时间等等，但是消息的实体body需要自己去反序列化，一般情况下不推荐使用这种方法。
+
+在集群模式下，同一个消费者组的消费者平摊同一个topic的信息，也就是一个topic的消息只能被同一个消费者组的消费者消费，但是不同的消费者组可以重复消费同一个topic的信息。
+
+在上面的代码中，我们通过添加@RocketMQMessageListener来设置消费者，该注解常用的属性如下:
+
+```java
+/**
+ * Consumer 所属消费者分组
+ *
+ * Consumers of the same role is required to have exactly same subscriptions and consumerGroup to correctly achieve
+ * load balance. It's required and needs to be globally unique.
+ *
+ * See <a href="http://rocketmq.apache.org/docs/core-concept/">here</a> for further discussion.
+ */
+String consumerGroup();
+
+/**
+ * 消费的 Topic
+ *
+ * Topic name.
+ */
+String topic();
+
+/**
+ * 选择器类型。默认基于 Message 的 Tag 选择。
+ *
+ * Control how to selector message.
+ *
+ * @see SelectorType
+ */
+SelectorType selectorType() default SelectorType.TAG;
+/**
+ * 选择器的表达式。
+ * 设置为 * 时，表示全部。
+ *
+ * 如果使用 SelectorType.TAG 类型，则设置消费 Message 的具体 Tag 。
+ * 如果使用 SelectorType.SQL92 类型，可见 https://rocketmq.apache.org/rocketmq/filter-messages-by-sql92-in-rocketmq/ 文档
+ *
+ * Control which message can be select. Grammar please see {@link SelectorType#TAG} and {@link SelectorType#SQL92}
+ */
+String selectorExpression() default "*";
+
+/**
+ * 消费模式。可选择并发消费，还是顺序消费。
+ *
+ * Control consume mode, you can choice receive message concurrently or orderly.
+ */
+ConsumeMode consumeMode() default ConsumeMode.CONCURRENTLY;
+
+/**
+ * 消息模型。可选择是集群消费，还是广播消费。
+ *
+ * Control message mode, if you want all subscribers receive message all message, broadcasting is a good choice.
+ */
+MessageModel messageModel() default MessageModel.CLUSTERING;
+
+/**
+ * 消费的线程池的最大线程数
+ *
+ * Max consumer thread number.
+ */
+int consumeThreadMax() default 64;
+
+/**
+ * 消费单条消息的超时时间
+ *
+ * Max consumer timeout, default 30s.
+ */
+long consumeTimeout() default 30000L;
+```
+
+@RocketMQMessageListener不常用的注解如下:
+
+```java
+// 默认从配置文件读取的占位符
+String NAME_SERVER_PLACEHOLDER = "${rocketmq.name-server:}";
+String ACCESS_KEY_PLACEHOLDER = "${rocketmq.consumer.access-key:}";
+String SECRET_KEY_PLACEHOLDER = "${rocketmq.consumer.secret-key:}";
+String TRACE_TOPIC_PLACEHOLDER = "${rocketmq.consumer.customized-trace-topic:}";
+String ACCESS_CHANNEL_PLACEHOLDER = "${rocketmq.access-channel:}";
+
+/**
+ * The property of "access-key".
+ */
+ String accessKey() default ACCESS_KEY_PLACEHOLDER;
+ /**
+ * The property of "secret-key".
+ */
+String secretKey() default SECRET_KEY_PLACEHOLDER;
+
+/**
+ * Switch flag instance for message trace.
+ */
+boolean enableMsgTrace() default true;
+/**
+ * The name value of message trace topic.If you don't config,you can use the default trace topic name.
+ */
+String customizedTraceTopic() default TRACE_TOPIC_PLACEHOLDER;
+
+/**
+ * Consumer 连接的 RocketMQ Namesrv 地址。默认情况下，使用 `rocketmq.name-server` 配置项即可。
+ *
+ * 如果一个项目中，Consumer 需要使用不同的 RocketMQ Namesrv ，则需要配置该属性。
+ *
+ * The property of "name-server".
+ */
+String nameServer() default NAME_SERVER_PLACEHOLDER;
+
+/**
+ * 访问通道。目前有 LOCAL 和 CLOUD 两种通道。
+ *
+ * LOCAL ，指的是本地部署的 RocketMQ 开源项目。
+ * CLOUD ，指的是阿里云的 ONS 服务。具体可见 https://help.aliyun.com/document_detail/128585.html 文档。
+ *
+ * The property of "access-channel".
+ */
+String accessChannel() default ACCESS_CHANNEL_PLACEHOLDER;
+```
+
+RocketMQ-Spring 考虑到开发者可能需要连接多个不同的 RocketMQ 集群，所以提供了 @ExtRocketMQTemplateConfiguration 注解，实现配置连接不同 RocketMQ 集群的 Producer 的 RocketMQTemplate Bean 对象。
+
+@ExtRocketMQTemplateConfiguration 注解的具体属性，和我们在 「3.2 应用配置文件」 的 rocketmq.producer 配置项是一致的，就不重复赘述啦。
+
+@ExtRocketMQTemplateConfiguration 注解的简单使用示例，代码如下：
+
+```java
+@ExtRocketMQTemplateConfiguration(nameServer = "${demo.rocketmq.extNameServer:demo.rocketmq.name-server}")
+public class ExtRocketMQTemplate extends RocketMQTemplate {
+}
+```
+
+* 在类上，添加 @ExtRocketMQTemplateConfiguration 注解，并设置连接的 RocketMQ Namesrv 地址。
+* 同时，需要继承 RocketMQTemplate 类，从而使我们可以直接使用 @Autowire 或 @Resource 注解，注入 RocketMQTemplate Bean 属性。
+
