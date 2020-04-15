@@ -43,6 +43,7 @@
   * [FutureTask, Guava异步回调模式](/note/异步回调模式.md)
 * **消息队列MQ**
   * [SpringBoot RocketMQ快速入门(实战篇)](/note/SpringBoot%20RocketMQ快速入门.md)
+  * [RocketMQ消息原理篇](/note/RocketMQ消息原理篇.md)
 
 ### :lock:数据库
 
