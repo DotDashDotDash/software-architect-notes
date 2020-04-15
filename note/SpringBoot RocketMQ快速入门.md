@@ -364,4 +364,99 @@ public class MyConsumer implements RocketMQListener<MyMessage> {
 
 ### 事务消息
 
-请看[《RocketMQ事务消息》]()
+* **事务消息**：消息队列 RocketMQ 版提供类似 X/Open XA 的分布式事务功能，通过消息队列 RocketMQ 版事务消息能达到分布式事务的最终一致。
+* **半事务消息**：暂不能投递的消息，发送方已经成功地将消息发送到了消息队列 RocketMQ 版服务端，但是服务端未收到生产者对该消息的二次确认，此时该消息被标记成“暂不能投递”状态，处于该种状态下的消息即半事务消息。
+* **消息回查**：由于网络闪断、生产者应用重启等原因，导致某条事务消息的二次确认丢失，消息队列 RocketMQ 版服务端通过扫描发现某条消息长期处于“半事务消息”时，需要主动向消息生产者询问该消息的最终状态（Commit 或是 Rollback），该询问过程即消息回查。
+
+消息队列 RocketMQ 版分布式事务消息不仅可以实现应用之间的解耦，又能保证数据的最终一致性。同时，传统的大事务可以被拆分为小事务，不仅能提升效率，还不会因为某一个关联应用的不可用导致整体回滚，从而最大限度保证核心系统的可用性。在极端情况下，如果关联的某一个应用始终无法处理成功，也只需对当前应用进行补偿或数据订正处理，而无需对整体业务进行回滚。
+
+> #### 事务消息的交互过程
+
+<div align=center><img src="/assets/ro1.png"/></div>
+
+**事务消息发送步骤如下：**
+
+1. 发送方将半事务消息发送至消息队列 RocketMQ 版服务端。
+2. 消息队列 RocketMQ 版服务端将消息持久化成功之后，向发送方返回 Ack 确认消息已经发送成功，此时消息为半事务消息。
+3. 发送方开始执行本地事务逻辑。
+4. 发送方根据本地事务执行结果向服务端提交二次确认（Commit 或是 Rollback），服务端收到 Commit 状态则将半事务消息标记为可投递，订阅方最终将收到该消息；服务端收到 Rollback 状态则删除半事务消息，订阅方将不会接受该消息。
+
+**事务消息回查步骤如下：**
+
+1. 在断网或者是应用重启的特殊情况下，上述步骤 4 提交的二次确认最终未到达服务端，经过固定时间后服务端将对该消息发起消息回查。
+2. 发送方收到消息回查后，需要检查对应消息的本地事务执行的最终结果。
+3. 发送方根据检查得到的本地事务的最终状态再次提交二次确认，服务端仍按照步骤 4 对半事务消息进行操作。
+
+> #### 事务消息Producer示例
+
+```java
+@Component
+public class MyProducer {
+
+    private static final String TX_PRODUCER_GROUP = "producer-group";
+
+    @Autowired
+    private RocketMQTemplate rocketMQTemplate;
+
+    public TransactionSendResult sendMessageInTransaction(Integer id) {
+        // <1> 创建 Message 消息
+        Message message = MessageBuilder.withPayload(new MyMessage().setId(id))
+                .build();
+        // <2> 发送事务消息
+        return rocketMQTemplate.sendMessageInTransaction(TX_PRODUCER_GROUP, MyMessage.TOPIC, message,
+                id);
+    }
+
+    //内置MQ事务监听器，监听事务
+    @RocketMQTransactionListener(txProducerGroup = TX_PRODUCER_GROUP)
+    public class TransactionListenerImpl implements RocketMQLocalTransactionListener {
+
+      private Logger logger = LoggerFactory.getLogger(getClass());
+
+      @Override
+      public RocketMQLocalTransactionState executeLocalTransaction(Message msg, Object arg) {
+          // ... local transaction process, return rollback, commit or unknown
+          logger.info("[executeLocalTransaction][执行本地事务，消息：{} arg：{}]", msg, arg);
+          return RocketMQLocalTransactionState.UNKNOWN;
+      }
+
+      @Override
+      public RocketMQLocalTransactionState checkLocalTransaction(Message msg) {
+          // ... check transaction status and return rollback, commit or unknown
+          logger.info("[checkLocalTransaction][回查消息：{}]", msg);
+          return RocketMQLocalTransactionState.COMMIT;
+      }
+    }
+}
+```
+
+* **方法参数 txProducerGroup** ，事务消息的生产者分组。因为 RocketMQ 是回查（请求）指定指定生产分组下的 Producer ，从而获得事务消息的状态，所以一定要正确设置。这里，我们设置了 "producer-group" 。
+* **方法参数 destination** ，消息的 Topic + Tag 。
+* **方法参数 message** ，消息，没什么特别。
+* **方法参数 arg** ，后续我们调用本地事务方法的时候，会传入该 arg 。如果要传递多个方法参数给本地事务的方法，可以通过数组，例如说 Object[]{arg1, arg2, arg3} 这样的形式。
+
+**对于上面的RocketMQ事务监听的内部类，主要进行了以下操作:**
+
+* 实现 #executeLocalTransaction(...) 方法，实现执行本地事务。
+  * 注意，这是一个模板方法。在调用这个方法之前，RocketMQTemplate 已经使用 Producer 发送了一条事务消息。然后根据该方法执行的返回的 RocketMQLocalTransactionState 结果，提交还是回滚该事务消息。
+  * 这里，我们为了模拟 RocketMQ 回查 Producer 来获得事务消息的状态，所以返回了 RocketMQLocalTransactionState.UNKNOWN 未知状态。
+* 实现 #checkLocalTransaction(...) 方法，检查本地事务。
+  * 在事务消息长事件未被提交或回滚时，RocketMQ 会回查事务消息对应的生产者分组下的 Producer ，获得事务消息的状态。此时，该方法就会被调用。
+  * 这里，我们直接返回 RocketMQLocalTransactionState.COMMIT 提交状态。
+
+**一般来说，有两种方式实现本地事务回查时，返回事务消息的状态:**
+
+**第一种**，通过 msg 消息，获得某个业务上的标识或者编号，然后去数据库中查询业务记录，从而判断该事务消息的状态是提交还是回滚。
+
+**第二种(推荐使用)**，记录 msg 的事务编号，与事务状态到数据库中。
+
+* 第一步，在 #executeLocalTransaction(...) 方法中，先存储一条 id 为 msg 的事务编号，状态为 RocketMQLocalTransactionState.UNKNOWN 的记录。
+* 第二步，调用带有事务的业务 Service 的方法。在该 Service 方法中，在逻辑都执行成功的情况下，更新 id 为 msg 的事务编号，状态变更为 RocketMQLocalTransactionState.COMMIT 。这样，我们就可以伴随这个事务的提交，更新 id 为 msg 的事务编号的记录的状为 RocketMQLocalTransactionState.COMMIT ，美滋滋。。
+* 第三步，要以 try-catch 的方式，调用业务 Service 的方法。如此，如果发生异常，回滚事务的时候，可以在 catch 中，更新 id 为 msg 的事务编号的记录的状态为 RocketMQLocalTransactionState.ROLLBACK 。 极端情况下，可能更新失败，则打印 error 日志，告警知道，人工介入。
+
+如此三步之后，我们在 #executeLocalTransaction(...) 方法中，就可以通过查找数据库，id 为 msg 的事务编号的记录的状态，然后返回。
+
+> #### 事务消息Consumer示例
+
+消费者模型大体相同
+
