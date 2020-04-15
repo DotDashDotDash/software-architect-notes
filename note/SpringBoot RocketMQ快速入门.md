@@ -275,7 +275,7 @@ String accessChannel() default ACCESS_CHANNEL_PLACEHOLDER;
 
 RocketMQ-Spring 考虑到开发者可能需要连接多个不同的 RocketMQ 集群，所以提供了 @ExtRocketMQTemplateConfiguration 注解，实现配置连接不同 RocketMQ 集群的 Producer 的 RocketMQTemplate Bean 对象。
 
-@ExtRocketMQTemplateConfiguration 注解的具体属性，和我们在 「3.2 应用配置文件」 的 rocketmq.producer 配置项是一致的，就不重复赘述啦。
+@ExtRocketMQTemplateConfiguration 注解的具体属性，和我们在 application.yml 中的 rocketmq.producer 配置项是一致的，就不重复赘述啦。
 
 @ExtRocketMQTemplateConfiguration 注解的简单使用示例，代码如下：
 
@@ -288,3 +288,80 @@ public class ExtRocketMQTemplate extends RocketMQTemplate {
 * 在类上，添加 @ExtRocketMQTemplateConfiguration 注解，并设置连接的 RocketMQ Namesrv 地址。
 * 同时，需要继承 RocketMQTemplate 类，从而使我们可以直接使用 @Autowire 或 @Resource 注解，注入 RocketMQTemplate Bean 属性。
 
+在一些业务场景下，我们希望使用 Producer 批量发送消息，提高发送性能。在 RocketMQTemplate 中，提供了一个方法方法批量发送消息的方法。代码如下：
+
+```java
+// RocketMQTemplate.java
+
+public <T extends Message> SendResult syncSend(String destination, Collection<T> messages, long timeout) {
+    // ... 省略具体代码实现
+}
+```
+
+通过方法参数 destination 可知，必须发送相同 Topic 的消息。
+
+**要注意方法参数 messages ，每个集合的元素必须是 Spring Messaging 定义的 Message 消息。RocketMQTemplate 重载了非常多的 #syncSend(...) 方法，一定要小心**
+
+通过方法名可知，这个是同步批量发送消息。
+
+有一点要注意，虽然是批量发送多条消息，但是是以所有消息加起来的大小，不能超过消息的最大大小的限制，而不是按照单条计算。所以，一次性发送的消息特别多，还是需要分批的进行批量发送。
+
+### 消费重试
+
+RocketMQ 提供消费重试的机制。在消息消费失败的时候，RocketMQ 会通过消费重试机制，重新投递该消息给 Consumer ，让 Consumer 有机会重新消费消息，实现消费成功。
+
+当然，RocketMQ 并不会无限重新投递消息给 Consumer 重新消费，而是在默认情况下，达到 16 次重试次数时，Consumer 还是消费失败时，该消息就会进入到死信队列。
+
+死信队列用于处理无法被正常消费的消息。当一条消息初次消费失败，消息队列会自动进行消息重试；达到最大重试次数后，若消费依然失败，则表明消费者在正常情况下无法正确地消费该消息，此时，消息队列不会立刻将消息丢弃，而是将其发送到该消费者对应的特殊队列中。
+
+**RocketMQ 将这种正常情况下无法被消费的消息称为死信消息（Dead-Letter Message），将存储死信消息的特殊队列称为死信队列（Dead-Letter Queue）。在 RocketMQ 中，可以通过使用 console 控制台对死信队列中的消息进行重发来使得消费者实例再次进行消费**。
+
+每条消息的失败重试，是有一定的间隔时间。实际上，消费重试是基于「5. 定时消息」 来实现，第一次重试消费按照延迟级别为 3 开始。所以，默认为 16 次重试消费，也非常好理解，毕竟延迟级别最高为 18 呀。
+
+**不过要注意，只有集群消费模式下，才有消息重试。**
+
+### 顺序消息
+
+RocketMQ 提供了两种顺序级别：
+
+* 普通顺序消息 ：Producer 将相关联的消息发送到相同的消息队列。
+* 完全严格顺序 ：在【普通顺序消息】的基础上，Consumer 严格顺序消费。
+
+目前已知的应用只有数据库 binlog 同步强依赖严格顺序消息，其他应用绝大部分都可以容忍短暂乱序，推荐使用普通的顺序消息。
+
+如下是 RocketMQ 官方文档对这两种顺序级别的定义：
+
+* 普通顺序消费模式下，消费者通过同一个消费队列收到的消息是有顺序的，不同消息队列收到的消息则可能是无顺序的。
+* 严格顺序消息模式下，消费者收到的所有消息均是有顺序的。
+
+> #### 顺序消息生产者
+
+**在消息的发送方，可通过RocketMQTemplate#xxxSendOrderly(,,String order,..)实现顺序发送**，同时，需要传入方法参数 hashKey ，作为选择消息队列的键。
+
+Producer 可以根据定义 MessageQueueSelector 消息队列选择策略，选择 Topic 下的队列。目前提供三种策略：
+
+* **SelectMessageQueueByHash** ，基于 hashKey 的哈希值取余，选择对应的队列。
+* **SelectMessageQueueByRandom** ，基于随机的策略，选择队列。
+* **SelectMessageQueueByMachineRoom** ,`有点看不懂`
+* **未使用 MessageQueueSelector 时，采用轮询的策略，选择队列**。
+
+RocketMQTemplate 在发送顺序消息时，**默认采用 SelectMessageQueueByHash 策略**。如此，相同的 hashKey 的消息，就可以发送到相同的 Topic 的对应队列中。这种形式，就是我们上文提到的普通顺序消息的方式。
+
+> #### 顺序消息消费者
+
+```java
+@Component
+@RocketMQMessageListener(
+        topic = Demo06Message.TOPIC,
+        consumerGroup = "consumer-group-" + My6Message.TOPIC,
+        consumeMode = ConsumeMode.ORDERLY // 设置为顺序消费
+)
+public class MyConsumer implements RocketMQListener<MyMessage> {
+}
+```
+
+@RocketMQMessageListener 注解，通过设置了 consumeMode = ConsumeMode.ORDERLY ，表示使用顺序消费。
+
+### 事务消息
+
+请看[《RocketMQ事务消息》]()
