@@ -52,6 +52,7 @@
   * [Redis持久化](/note/redis持久化.md)
   * [Redis事务](/note/redis事务.md)
   * [Redis面试题汇总](note/Redis面经.md)
+  * [Redis跳表skiplist性能分析(精彩好文，转载)](https://juejin.im/post/57fa935b0e3dd90057c50fbc)
 * **MySQL**
   * [MySQL主从复制与读写分离](note/MySQL主从复制与读写分离.md)
   * [MySQL事务隔离级别](/note/MySQL事务隔离级别.md)
@@ -64,5 +65,6 @@
 ### :closed_book: 源码阅读
 
 * **Redis**
-  * [Redis字典源码阅读](doc/redis字典.md)
-  * [Redis跳表skiplist性能分析(精彩好文)](https://juejin.im/post/57fa935b0e3dd90057c50fbc)
+  * [Redis字典源码阅读](doc/redis/redis字典.md)
+* **RocketMQ**
+  * [RocketMQ事务消息源码阅读](/doc/rocketmq/rocketmq事务消息.md)
