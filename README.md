@@ -11,7 +11,9 @@
 ### :leaves:Spring
 
 * **Spring Security**
-  * [OAuth最详细的解析](/note/SpringSecurity%20OAuth最详细的解析.md)
+  * [Spring Security笔记](/note/SpringSecurity解析.md)
+  * [SpringSecurityFilterChain深度解析](/note/SpringSecurityFilterChain深度解析.md)
+  * [OAuth2笔记](/note/OAuth2笔记.md)
 * **Spring Cloud**
   * [Hystrix熔断/降级/限流](note/Hystrix原理与实战.md)
   * [SpringCloud Alibaba Sentinel流量卫兵I](note/Sentinel入门.md)
