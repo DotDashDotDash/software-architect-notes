@@ -1,8 +1,8 @@
-## Spring Security OAuth最详细的解析
+# Spring Security OAuth最详细的解析
 
-### 1. 核心组件
+## 1. 核心组件
 
-#### 1.1 SecurityContextHolder
+### 1.1 SecurityContextHolder
 
 SecurityContextHolder用于存储安全上下文信息。当前操作的用户是谁，该用户是否已经被认证，用户拥有哪些权限角色等都会被保存在这里。SecurityContextHolder默认使用ThreadLocal存储认证信息，这就表明了SecurityContextHolder与线程是相关的，这是一种和线程绑定的策略。
 
@@ -20,7 +20,7 @@ if(principle instanceof UserDetails){
 
 getAuthentication()返回了认证信息Authentication，getPrinciple()返回了身份信息。UserDetails是Spring对身份信息的一个包装的接口。
 
-#### 1.2 Authentication
+### 1.2 Authentication
 
 Authentication的源码如下:
 
@@ -41,12 +41,12 @@ public interface Authentication extends Principle, Serializable{
 }
 ```
 
-<1> 权限信息列表
-<2> 密码信息，用户输入的密码字符串，在认证过后会被移除，用来减少不必要的安全隐患信息
-<3> 细节信息，Web应用中实现的接口通常为WebAuthenticationDetails，记录了用户访问的ip地址和sessionId信息等
-<4> 最重要的身份信息，大部分情况返回的是UserDetails接口的实现类
+<1> 权限信息列表<br>
+<2> 密码信息，用户输入的密码字符串，在认证过后会被移除，用来减少不必要的安全隐患信息<br>
+<3> 细节信息，Web应用中实现的接口通常为WebAuthenticationDetails，记录了用户访问的ip地址和sessionId信息等<br>
+<4> 最重要的身份信息，大部分情况返回的是UserDetails接口的实现类<br>
 
-#### 1.3 UserDetails
+### 1.3 UserDetails
 
 UserDetails代表了最详细的用户的信息，大致源码如下:
 
@@ -73,7 +73,7 @@ public interface UserDetails extends Serializable{
 
 可以注意到Authentication和UserDetails中都含有getAuthorities()方法，实际上Authentication中的getAuthorities()是通过UserDetails#getAuthorities()获得的，Authentication中有一个方法getUserDetails()，其中的UserDetails是经过AuthenticationProvider之后被填充的。
 
-#### 1.4 UserDetailsService
+### 1.4 UserDetailsService
 
 ```java
 public interface UserDetailsService{
@@ -88,7 +88,7 @@ UserDetailsService只从特定的位置加载用户的信息(通常是数据库)
 
 但是实际生产中最常见的是用户自定义loadUserByUsername()实现用户信息的加载
 
-#### 1.5 AuthenticationManager
+### 1.5 AuthenticationManager
 
 **AuthenticationManager是用户认证的核心接口！！！！无论何种验证方式，一定会以这个接口为入口点！！！**
 
