@@ -173,3 +173,13 @@ docker run -volume-from 容器ID 镜像名称  # 容器ID是di一个容器的ID�
 * `WORKDIR /path/to/workdir`
 
 切换目录指令，类似于cd命令，写在该指令后的RUN，CMD以及ENTRYPOINT指令都将该目录作为当前目录，并执行相应的命令。
+
+## 4. 管理自己的Docker镜像
+
+* [利用DockerHub管理镜像](http://www.itmuch.com/docker/09-docker-docker-hub/)
+* [利用Docker Registry管理镜像](http://www.itmuch.com/docker/10-docker-docker-registry/)
+* [利用Nexus管理Docker镜像](http://www.itmuch.com/docker/11-docker-nexus/)
+
+## 5. 利用Maven构建Docker镜像
+
+[利用Maven构建Docker镜像](http://www.itmuch.com/docker/12-docker-maven/)

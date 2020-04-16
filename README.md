@@ -34,19 +34,22 @@
   * [并发编程入门](note/Java并发.md)
   * [分布式一致性](/note/分布式一致性.md)
   * [ThreadLocal原理与解读](http://www.jasongj.com/java/threadlocal/)
-* **ZooKeeper**
-  * [ZooKeeper入门](/note/ZooKeeper入门.md)
-  * [ZooKeeper应用场景](note/ZooKeeper应用场景.md)
-  * [ZooKeeper&Paxos进阶(转载)](https://github.com/Snailclimb/JavaGuide/blob/master/docs/system-design/framework/ZooKeeper-plus.md)
-* **Netty**
-  * [Netty入门——Reactor反应者模式](note/Reactor入门(一).md)
-  * [Netty入门——原理与应用](note/Netty原理与基础.md)
-  * [Netty内存泄漏罪魁祸首ByteBuf](note/Netty组件之ByteBuf.md)
-  * [FutureTask, Guava异步回调模式](/note/异步回调模式.md)
-* **消息队列MQ**
-  * [SpringBoot RocketMQ快速入门(实战篇)](/note/SpringBoot%20RocketMQ快速入门.md)
-  * [RocketMQ消息原理篇](/note/RocketMQ消息原理篇.md)
-  * [从RocketMQ事务消息看并发性能优化](/note/从RocketMQ事务消息看并发性能优化.md)
+* **注册中心**
+  * **ZooKeeper**
+    * [ZooKeeper入门](/note/ZooKeeper入门.md)
+    * [ZooKeeper应用场景](note/ZooKeeper应用场景.md)
+    * [ZooKeeper&Paxos进阶(转载)](https://github.com/Snailclimb/JavaGuide/blob/master/docs/system-design/framework/ZooKeeper-plus.md)
+* **服务器**
+  * **Netty**
+    * [Netty入门——Reactor反应者模式](note/Reactor入门(一).md)
+    * [Netty入门——原理与应用](note/Netty原理与基础.md)
+    * [Netty内存泄漏罪魁祸首ByteBuf](note/Netty组件之ByteBuf.md)
+    * [FutureTask, Guava异步回调模式](/note/异步回调模式.md)
+* **消息队列**
+  * **RocketMQ**
+    * [SpringBoot RocketMQ快速入门(实战篇)](/note/SpringBoot%20RocketMQ快速入门.md)
+    * [RocketMQ消息原理篇](/note/RocketMQ消息原理篇.md)
+    * [从RocketMQ事务消息看并发性能优化](/note/从RocketMQ事务消息看并发性能优化.md)
 
 ### :lock:数据库
 
