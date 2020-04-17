@@ -61,7 +61,7 @@
 * **MySQL**
   * [MySQL日志系统](/note/MySQL日志系统.md)
   * [MySQL主从复制与读写分离](note/MySQL主从复制与读写分离.md)
-  * [MySQL事务隔离级别](/note/MySQL事务隔离级别.md)
+  * [MySQL事务](/note/MySQL事务.md)
   * [MySQL索引(面试重点)](/note/MySQL存储与索引.md)
   * [MySQL优化专题(重要)](note/MySQL优化专题.md)
   * [MySQL优化(转载)](https://mp.weixin.qq.com/s?__biz=Mzg2OTA0Njk0OA==&mid=2247485117&idx=1&sn=92361755b7c3de488b415ec4c5f46d73&chksm=cea24976f9d5c060babe50c3747616cce63df5d50947903a262704988143c2eeb4069ae45420&token=79317275&lang=zh_CN#rd)
