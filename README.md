@@ -31,10 +31,9 @@
 ### :triangular_flag_on_post:分布式高并发
 
 * **分布式/并发基础**
-  * [并发编程入门](note/Java并发.md)
+  * [带你了解Java并发入门知识](note/Java并发.md)
   * [分布式一致性](/note/分布式一致性.md)
   * [ThreadLocal原理与解读](http://www.jasongj.com/java/threadlocal/)
-  * [大厂面试Java并发编程](/note/大厂面试Java并发编程.md)
 * **注册中心**
   * **ZooKeeper**
     * [ZooKeeper入门](/note/ZooKeeper入门.md)
@@ -77,3 +76,7 @@
   * [Redis字典源码阅读](doc/redis/redis字典.md)
 * **RocketMQ**
   * [RocketMQ事务消息源码阅读](/doc/rocketmq/rocketmq事务消息.md)
+
+### :egg: 彩蛋
+
+* [吊打面试官系列—Java并发编程](大厂面试Java并发编程.md)
