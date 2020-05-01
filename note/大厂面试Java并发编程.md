@@ -36,7 +36,8 @@ Oops是指Ordinary Object Pointers(普通对象指针)，默认情况下，一�
 
 **上述锁升级的状态的过程全部都记录在对象的mark word当中，mark word一共有64位(8字节)**
 
-<div align=center><img src="/assets/suo1.jpg"/></div>
+![](D:\github\notes\assets\suo1.jpg)
+
 
 ### 2.1 无锁升级为偏向锁
 
