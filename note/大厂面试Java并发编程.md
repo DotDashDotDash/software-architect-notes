@@ -307,5 +307,34 @@ public class Phantom{
 }
 ```
 
+## 5. ThreadLocal
 
+ThreadLocal是将对象与本地线程绑定，先上代码:
+
+```java
+public class TL{
+    static ThreadLocal<Person> tl = new ThreadLocal<>();
+    
+    public static void main(String[] args){
+        
+        new Thread(() -> {	//thread1
+            //sleep
+            tl.set(new Person());
+        }).start();
+        
+        new Thread(() -> {	//thread2
+            //sleep
+            t1.get();
+        }).start();
+    }
+    
+    public class Person{}
+}
+```
+
+由于ThreadLocal是将对象和本地线程进行绑定，所以thread1绑定了之后thread2尝试获取，**结果一定是null！因为person并不是和thread2绑定的**
+
+### 5.1 ThreadLocal案例
+
+假如一个用户需要访问数据库，但是两个方法m1()和m2()都需要访问数据库，因为他们是在同一个session里面的，所以他们获得的一定是同一个connection，如何保证，ThreadLocal！！
 
