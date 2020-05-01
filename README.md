@@ -31,9 +31,8 @@
 ### :triangular_flag_on_post:分布式高并发
 
 * **分布式/并发基础**
-  * [带你了解Java并发入门知识](note/Java并发.md)
   * [分布式一致性](/note/分布式一致性.md)
-  * [ThreadLocal原理与解读](http://www.jasongj.com/java/threadlocal/)
+  * [连小学生都会的java并发基础知识](note/Java并发.md)
 * **注册中心**
   * **ZooKeeper**
     * [ZooKeeper入门](/note/ZooKeeper入门.md)
