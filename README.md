@@ -76,6 +76,6 @@
 * **RocketMQ**
   * [RocketMQ事务消息源码阅读](/doc/rocketmq/rocketmq事务消息.md)
 
-### :egg: 彩蛋
+### :egg: 计算机相关知识
 
-* [吊打面试官系列—Java并发编程](大厂面试Java并发编程.md)
+* [计算机组成原理相关知识](/note/计算机组成原理相关知识.md)
